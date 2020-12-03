@@ -1,0 +1,1 @@
+g++ -o "/home/ubuntu/projects/StlTest/bin/ARM64/Debug/StlTest.out" -Wl,--no-undefined -Wl,-z,relro -Wl,-z,now -Wl,-z,noexecstack /home/ubuntu/projects/StlTest/obj/ARM64/Debug/main.o -lSDL2

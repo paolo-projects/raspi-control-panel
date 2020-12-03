@@ -1,0 +1,29 @@
+﻿  Convalida delle origini
+  Copia delle origini in '192.168.1.6' in modalità remota
+  Convalida dell'architettura
+  Convalida dell'architettura
+  Avvio della compilazione remota
+  Compilazione delle origini:
+  Button.cpp
+  GraphicsScene.cpp
+  main.cpp
+C:\Users\infan\source\repos\StlTest\StlTest\SineWaveAnimation.h(18,28): warning : conversion from ‘double’ to ‘float’ changes value from ‘-1.5707963267948966e+0’ to ‘-1.57079637e+0f’ [-Wfloat-conversion]
+C:\Users\infan\source\repos\StlTest\StlTest\main.cpp(106,36): warning : comparison of integer expressions of different signedness: ‘uint32_t’ {aka ‘unsigned int’} and ‘int’ [-Wsign-compare]
+C:\Users\infan\source\repos\StlTest\StlTest\main.cpp(106,36): warning :    if (currentTicks - previousTicks < _60_fps_ft) // Avoid stressing the CPU since the SPI screen has a very poor refresh rate
+C:\Users\infan\source\repos\StlTest\StlTest\main.cpp(106,36): warning :        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~
+  SineWaveAnimation.cpp
+C:\Users\infan\source\repos\StlTest\StlTest\SineWaveAnimation.h(18,28): warning : conversion from ‘double’ to ‘float’ changes value from ‘-1.5707963267948966e+0’ to ‘-1.57079637e+0f’ [-Wfloat-conversion]
+C:\Users\infan\source\repos\StlTest\StlTest\SineWaveAnimation.cpp(8,20): warning : conversion from ‘int’ to ‘float’ may change value [-Wconversion]
+C:\Users\infan\source\repos\StlTest\StlTest\SineWaveAnimation.cpp(8,20): warning :    points[i] = sinF(i);
+C:\Users\infan\source\repos\StlTest\StlTest\SineWaveAnimation.cpp(8,20): warning :                     ^
+C:\Users\infan\source\repos\StlTest\StlTest\SineWaveAnimation.cpp(14,33): warning : conversion from ‘uint32_t’ {aka ‘unsigned int’} to ‘float’ may change value [-Wconversion]
+C:\Users\infan\source\repos\StlTest\StlTest\SineWaveAnimation.cpp(14,80): warning : conversion from ‘int’ to ‘float’ may change value [-Wconversion]
+C:\Users\infan\source\repos\StlTest\StlTest\SineWaveAnimation.cpp(14,25): warning : conversion from ‘float’ to ‘int’ may change value [-Wfloat-conversion]
+C:\Users\infan\source\repos\StlTest\StlTest\SineWaveAnimation.cpp(41,50): warning : conversion from ‘int’ to ‘float’ may change value [-Wconversion]
+C:\Users\infan\source\repos\StlTest\StlTest\SineWaveAnimation.cpp(41,58): warning : conversion from ‘int’ to ‘float’ may change value [-Wconversion]
+C:\Users\infan\source\repos\StlTest\StlTest\SineWaveAnimation.cpp(41,19): warning : conversion from ‘float’ to ‘int’ may change value [-Wfloat-conversion]
+  TouchEventDispatcher.cpp
+  TouchInput.cpp
+  Window.cpp
+  Collegamento degli oggetti
+  StlTest.vcxproj -> C:\Users\infan\source\repos\StlTest\StlTest\bin\ARM\Release\StlTest.out
