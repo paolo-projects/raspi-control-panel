@@ -3,7 +3,7 @@
 
 typedef void(*TouchCallback)();
 
-class TouchEnabledObject : public GraphicsObject
+class TouchEnabledObject
 {
 public:
 	virtual int getX() const = 0;

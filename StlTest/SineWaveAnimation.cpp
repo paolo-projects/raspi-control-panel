@@ -11,7 +11,7 @@ SineWaveAnimation::SineWaveAnimation(SDL_Renderer* renderer)
 
 void SineWaveAnimation::draw(uint32_t time)
 {
-	int offset = std::round(((time % REVOLUTION_TIME) / (float)REVOLUTION_TIME) * ADDITIONAL_PIXELS);
+	int offset = int(std::round(((time % REVOLUTION_TIME) / (double)REVOLUTION_TIME) * ADDITIONAL_PIXELS));
 	SDL_SetRenderDrawColor(renderer, 0xFF, 0, 0, 0xFF);
 	SDL_RenderDrawPoints(renderer, makePoints(points, WIDTH, offset), WIDTH);
 }
@@ -36,9 +36,9 @@ int SineWaveAnimation::getHeight() const
 	return HEIGHT;
 }
 
-int SineWaveAnimation::sinF(float x)
+int SineWaveAnimation::sinF(double x)
 {
-	return std::round(std::sin(x / DIVISION * PI) * RANGE + BASE_Y);
+	return int(std::round(std::sin(x / DIVISION * PI) * RANGE + BASE_Y));
 }
 
 const SDL_Point* SineWaveAnimation::makePoints(const std::vector<int>& points, int count, int offset)

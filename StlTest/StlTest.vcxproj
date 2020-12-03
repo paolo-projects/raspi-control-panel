@@ -77,7 +77,9 @@
   <ItemGroup>
     <ClCompile Include="Button.cpp" />
     <ClCompile Include="GraphicsScene.cpp" />
+    <ClCompile Include="InteractiveGraphicsObject.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="MainScene.cpp" />
     <ClCompile Include="SineWaveAnimation.cpp" />
     <ClCompile Include="TouchEventDispatcher.cpp" />
     <ClCompile Include="TouchInput.cpp" />
@@ -87,6 +89,8 @@
     <ClInclude Include="Button.h" />
     <ClInclude Include="GraphicsObject.h" />
     <ClInclude Include="GraphicsScene.h" />
+    <ClInclude Include="InteractiveGraphicsObject.h" />
+    <ClInclude Include="MainScene.h" />
     <ClInclude Include="SDLException.h" />
     <ClInclude Include="SineWaveAnimation.h" />
     <ClInclude Include="TouchEnabledObject.h" />
@@ -95,9 +99,6 @@
     <ClInclude Include="TouchInputException.h" />
     <ClInclude Include="TTFFontException.h" />
     <ClInclude Include="Window.h" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="README.md" />
   </ItemGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|ARM'">
     <Link>

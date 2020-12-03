@@ -15,18 +15,8 @@ Window::Window(int width, int height, SDL_Color color) :
 		throw SDLException("Couldn't create the renderer. %s", SDL_GetError());
 	}
 
-	//screenSurf = SDL_GetWindowSurface(window);
-
-	if (!screenSurf)
-	{
-		//throw SDLException("Couldn't retrieve the window surface");
-	}
-
 	SDL_SetRenderDrawColor(renderer, color.r, color.g, color.b, color.a);
 	SDL_RenderClear(renderer);
-	//SDL_FillRect(screenSurf, NULL, SDL_MapRGB(screenSurf->format, color.r, color.g, color.b));
-
-	SDL_RenderPresent(renderer);
 }
 
 Window::~Window()

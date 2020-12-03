@@ -3,10 +3,9 @@
 #include <SDL2/SDL_ttf.h>
 
 #include "TTFFontException.h"
-#include "TouchEnabledObject.h"
-#include "GraphicsObject.h"
+#include "InteractiveGraphicsObject.h"
 
-class Button : public TouchEnabledObject
+class Button : public InteractiveGraphicsObject
 {
 public:
 	Button(SDL_Renderer* renderer, std::string text, int x, int y, int size, int fontSize, SDL_Color fillColor, SDL_Color textColor);
