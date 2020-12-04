@@ -11,6 +11,7 @@
 #include <fcntl.h>
 #include <unistd.h>
 #include <memory>
+#include <map>
 
 #include "Window.h"
 #include "TouchInput.h"
@@ -19,6 +20,7 @@
 #include "SineWaveAnimation.h"
 #include "GraphicsScene.h"
 #include "MainScene.h"
+#include "SamplingScene.h"
 
 int ProcessEvent(const ts_sample_mt touch_event);
 void err_kill(const char* msg, bool show_sdl_err = true, ...);
@@ -35,10 +37,13 @@ const char* TTY_DEV = "/dev/tty0";
 
 bool quit = false;
 GraphicsScene* currentScene = nullptr;
+std::map<std::string, GraphicsScene*> scenes;
 TouchEventDispatcher touchDispatcher(&currentScene);
+uint32_t lastTouchEvent = SDL_GetTicks();
 
 #define SLOTS 5
 #define SAMPLES 1
+#define TOUCH_DEBOUNCE_MS 150
 
 int main(int argc, char** argv)
 {
@@ -88,7 +93,17 @@ int main(int argc, char** argv)
 void StartMainLoop() {
 	Window mainWindow(S_WIDTH, S_HEIGHT, SDL_Color{ 0x00, 0x00, 0x00, 0xFF });
 	TouchInput touchInput("/dev/input/event0", ProcessEvent, SAMPLES, SLOTS);
-	MainScene mainScene(mainWindow.getRenderer(), S_WIDTH, S_HEIGHT, []() {OnTermination(SIGINT); }, []() {});
+	MainScene mainScene(mainWindow.getRenderer(), S_WIDTH, S_HEIGHT, []() {OnTermination(SIGINT); }, []()
+		{
+			currentScene = scenes["SAMPLING"];
+		});
+	SamplingScene samplingScene(mainWindow.getRenderer(), []()
+		{
+			currentScene = scenes["MAIN"];
+		});
+
+	scenes["MAIN"] = &mainScene;
+	scenes["SAMPLING"] = &samplingScene;
 
 	currentScene = &mainScene;
 
@@ -134,8 +149,9 @@ void err_kill(const char* msg, bool show_sdl_err, ...) {
 }
 
 int ProcessEvent(const ts_sample_mt touch_event) {
-	if (touch_event.valid) {
+	if (touch_event.valid && SDL_GetTicks() > lastTouchEvent + TOUCH_DEBOUNCE_MS) {
 		touchDispatcher.dispatchTouchEvent(touch_event.x, touch_event.y);
+		lastTouchEvent = SDL_GetTicks();
 	}
 	return 0;
 }

@@ -1,16 +1,17 @@
 #include "MainScene.h"
 
 MainScene::MainScene(SDL_Renderer* renderer, int width, int height, TouchCallback exitBtnCallback, TouchCallback startBtnCallback) :
-	GraphicsScene(),
-	exitBtn(renderer, "Esci", width - 20 - 50, 20, 50, 14, { 0xEE, 0xEE, 0xEE, 0xFF }, { 0x00, 0x00, 0x00, 0xFF }),
-	startBtn(renderer, "Avvia", 20, 20, 50, 14, { 0x99, 0x99, 0x0, 0xFF }, { 0xFF, 0xFF, 0xFF, 0xFF }),
-	sineAnim(renderer)
+	GraphicsScene()
 {
-	exitBtn.setTouchCallback(exitBtnCallback);
-	addObject(&exitBtn);
+	exitBtn = std::unique_ptr<Button>(new Button(renderer, "Esci", width - 40 - 60, 40, 60, 60, 14, { 0xEE, 0xEE, 0xEE, 0xFF }, { 0x00, 0x00, 0x00, 0xFF }));
+	startBtn = std::unique_ptr<Button>(new Button(renderer, "Avvia", 40, 40, 60, 60, 14, { 0x99, 0x99, 0x0, 0xFF }, { 0xFF, 0xFF, 0xFF, 0xFF }));
+	sineAnim = std::unique_ptr<SineWaveAnimation>(new SineWaveAnimation(renderer));
 
-	startBtn.setTouchCallback(startBtnCallback);
-	addObject(&startBtn);
+	exitBtn->setTouchCallback(exitBtnCallback);
+	addObject(exitBtn.get());
 
-	addObject(&sineAnim);
+	startBtn->setTouchCallback(startBtnCallback);
+	addObject(startBtn.get());
+
+	addObject(sineAnim.get());
 }

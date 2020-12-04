@@ -1,9 +1,9 @@
 #include "Button.h"
 
-Button::Button(SDL_Renderer* renderer, std::string text, int x, int y, int size, int fontSize, SDL_Color fillColor, SDL_Color textColor) :
-	renderer(renderer), x(x), y(y), size(size), fontSize(fontSize), fillColor(fillColor), textColor(textColor)
+Button::Button(SDL_Renderer* renderer, std::string text, int x, int y, int width, int height, int fontSize, SDL_Color fillColor, SDL_Color textColor) :
+	renderer(renderer), x(x), y(y), width(width), height(height), fontSize(fontSize), fillColor(fillColor), textColor(textColor)
 {
-	rectangle = { x, y, size, size };
+	rectangle = { x, y, width, height };
 
 	font = TTF_OpenFont("font.ttf", fontSize);
 	if (!font)
@@ -20,8 +20,8 @@ Button::Button(SDL_Renderer* renderer, std::string text, int x, int y, int size,
 	int textW = textSurface->w;
 	int textH = textSurface->h;
 
-	int marginVert = (size - textH) / 2;
-	int marginHor = (size - textW) / 2;
+	int marginVert = (height - textH) / 2;
+	int marginHor = (width - textW) / 2;
 	textPosition = { x + marginHor, y + marginVert, textW, textH };
 }
 
@@ -50,10 +50,10 @@ int Button::getY() const
 
 int Button::getWidth() const
 {
-	return size;
+	return width;
 }
 
 int Button::getHeight() const
 {
-	return size;
+	return height;
 }
