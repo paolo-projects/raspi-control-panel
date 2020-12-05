@@ -78,6 +78,7 @@
     <ClCompile Include="Application.cpp" />
     <ClCompile Include="Button.cpp" />
     <ClCompile Include="GraphicsScene.cpp" />
+    <ClCompile Include="ImageButton.cpp" />
     <ClCompile Include="InteractiveGraphicsObject.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="MainScene.cpp" />
@@ -94,6 +95,8 @@
     <ClInclude Include="Button.h" />
     <ClInclude Include="GraphicsObject.h" />
     <ClInclude Include="GraphicsScene.h" />
+    <ClInclude Include="ImageButton.h" />
+    <ClInclude Include="IMGException.h" />
     <ClInclude Include="InteractiveGraphicsObject.h" />
     <ClInclude Include="MainScene.h" />
     <ClInclude Include="SamplingScene.h" />
@@ -111,42 +114,42 @@
   </ItemGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|ARM'">
     <Link>
-      <AdditionalDependencies>$(StlAdditionalDependencies);%(Link.AdditionalDependencies);-lSDL2;-lts;-lSDL2_ttf</AdditionalDependencies>
+      <AdditionalDependencies>$(StlAdditionalDependencies);%(Link.AdditionalDependencies);-lSDL2;-lts;-lSDL2_ttf;-lSDL2_image</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|ARM'">
     <Link>
-      <AdditionalDependencies>$(StlAdditionalDependencies);%(Link.AdditionalDependencies);-lSDL2;-lts;-lSDL2_ttf</AdditionalDependencies>
+      <AdditionalDependencies>$(StlAdditionalDependencies);%(Link.AdditionalDependencies);-lSDL2;-lts;-lSDL2_ttf;-lSDL2_image</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">
     <Link>
-      <AdditionalDependencies>$(StlAdditionalDependencies);%(Link.AdditionalDependencies);-lSDL2;-lts;-lSDL2_ttf</AdditionalDependencies>
+      <AdditionalDependencies>$(StlAdditionalDependencies);%(Link.AdditionalDependencies);-lSDL2;-lts;-lSDL2_ttf;-lSDL2_image</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">
     <Link>
-      <AdditionalDependencies>$(StlAdditionalDependencies);%(Link.AdditionalDependencies);-lSDL2;-lts;-lSDL2_ttf</AdditionalDependencies>
+      <AdditionalDependencies>$(StlAdditionalDependencies);%(Link.AdditionalDependencies);-lSDL2;-lts;-lSDL2_ttf;-lSDL2_image</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <Link>
-      <AdditionalDependencies>$(StlAdditionalDependencies);%(Link.AdditionalDependencies);-lSDL2;-lts;-lSDL2_ttf</AdditionalDependencies>
+      <AdditionalDependencies>$(StlAdditionalDependencies);%(Link.AdditionalDependencies);-lSDL2;-lts;-lSDL2_ttf;-lSDL2_image</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <Link>
-      <AdditionalDependencies>$(StlAdditionalDependencies);%(Link.AdditionalDependencies);-lSDL2;-lts;-lSDL2_ttf</AdditionalDependencies>
+      <AdditionalDependencies>$(StlAdditionalDependencies);%(Link.AdditionalDependencies);-lSDL2;-lts;-lSDL2_ttf;-lSDL2_image</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x86'">
     <Link>
-      <AdditionalDependencies>$(StlAdditionalDependencies);%(Link.AdditionalDependencies);-lSDL2;-lts;-lSDL2_ttf</AdditionalDependencies>
+      <AdditionalDependencies>$(StlAdditionalDependencies);%(Link.AdditionalDependencies);-lSDL2;-lts;-lSDL2_ttf;-lSDL2_image</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x86'">
     <Link>
-      <AdditionalDependencies>$(StlAdditionalDependencies);%(Link.AdditionalDependencies);-lSDL2;-lts;-lSDL2_ttf</AdditionalDependencies>
+      <AdditionalDependencies>$(StlAdditionalDependencies);%(Link.AdditionalDependencies);-lSDL2;-lts;-lSDL2_ttf;-lSDL2_image</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

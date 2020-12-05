@@ -52,13 +52,13 @@ void Application::EnableTTYCursor()
 	int res = ioctl(tty, VT_UNLOCKSWITCH, 1);
 
 	if (res == -1) {
-		perror("VT_UNLOCKSWITCH to 0 failed, ignoring");
+		perror("VT_UNLOCKSWITCH to 1 failed, ignoring");
 	}
 
 	res = ioctl(tty, KDSETMODE, KD_TEXT);
 
 	if (res == -1) {
-		perror("KDSETMODE to KD_GRAPHICS failed, ignoring");
+		perror("KDSETMODE to KD_TEXT failed, ignoring");
 	}
 
 	close(tty);
@@ -80,31 +80,44 @@ int Application::run()
 				::exit(1);
 			}
 
-			DisableTTYCursor();
-			SDL_ShowCursor(SDL_DISABLE);
-
-			auto onTermination = [](int signal) {
-				application->exit();
-			};
-
-			signal(SIGINT, onTermination);
-			signal(SIGTERM, onTermination);
-			signal(SIGKILL, onTermination);
-
 			try {
-				MainLoop();
+				if (IMG_Init(IMG_INIT_JPG | IMG_INIT_PNG | IMG_INIT_TIF) == 0) {
+					TTF_Quit();
+					SDL_Quit();
+					fprintf(stderr, "Failed while initializing SDL IMG Library. %s\n", TTF_GetError());
+					::exit(1);
+				}
+
+				DisableTTYCursor();
+				SDL_ShowCursor(SDL_DISABLE);
+
+				auto onTermination = [](int signal) {
+					application->exit();
+				};
+
+				signal(SIGINT, onTermination);
+				signal(SIGTERM, onTermination);
+				signal(SIGKILL, onTermination);
+
+				try {
+					MainLoop();
+				}
+				catch (const std::exception& exc) {
+					perror(exc.what());
+				}
+
+				signal(SIGINT, SIG_DFL);
+				signal(SIGTERM, SIG_DFL);
+				signal(SIGKILL, SIG_DFL);
+
+				EnableTTYCursor();
+
+				TTF_Quit();
 			}
-			catch (const std::exception& exc) {
+			catch (const IMGException& exc) {
 				perror(exc.what());
+				presult = 1;
 			}
-
-			signal(SIGINT, SIG_DFL);
-			signal(SIGTERM, SIG_DFL);
-			signal(SIGKILL, SIG_DFL);
-
-			EnableTTYCursor();
-
-			TTF_Quit();
 		}
 		catch (const TTFFontException& exc) {
 			perror(exc.what());

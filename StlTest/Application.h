@@ -1,6 +1,7 @@
 #pragma once
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_ttf.h>
+#include <SDL2/SDL_image.h>
 #include <string>
 #include <unistd.h>
 #include <linux/vt.h>
@@ -16,6 +17,7 @@
 #include "MainScene.h"
 #include "SamplingScene.h"
 #include "TouchEventDispatcher.h"
+#include "IMGException.h"
 
 class Application
 {

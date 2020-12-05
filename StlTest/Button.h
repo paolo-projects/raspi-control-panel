@@ -9,7 +9,7 @@ class Button : public InteractiveGraphicsObject
 {
 public:
 	Button() = delete;
-	Button(SDL_Renderer* renderer, std::string text, int x, int y, int width, int height, SDL_Color fillColor, SDL_Color textColor, TTF_Font* font);
+	Button(SDL_Renderer* renderer, const char* text, int x, int y, int width, int height, SDL_Color fillColor, SDL_Color textColor, TTF_Font* font);
 	~Button();
 	void draw(uint32_t time) override;
 	int getX() const override;
