@@ -28,7 +28,7 @@ TouchInput::~TouchInput()
 	}
 	delete[] samp_mt;
 
-	// Using std::vector -> SIGABRT (memory leak somewhere?)
+	// Using std::vector<std::vector> leads to a SIGABRT (memory leak somewhere?)
 	// Had to switch to a plain multidimensional array
 	// Probably the library, on ts_close, attempts to free the memory I initialized
 	// which is a fairly serious issue, but until fixed, we do it this way

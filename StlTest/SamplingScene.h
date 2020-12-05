@@ -15,8 +15,7 @@ class SamplingScene : public GraphicsScene
 public:
 	SamplingScene(SceneManager& sceneManager);
 private:
-	std::unique_ptr<Button> measureBtn, sampleBtn;
-	std::unique_ptr<ImageButton> backBtn;
+	std::unique_ptr<ImageButton> measureBtn, sampleBtn, backBtn;
 	std::unique_ptr<WavefunctionAnimation> wavefunAnim;
 };
 

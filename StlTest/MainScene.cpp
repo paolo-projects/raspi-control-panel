@@ -8,18 +8,10 @@ MainScene::MainScene(SceneManager& sceneManager) :
 	SDL_Renderer* renderer = Application::getCurrent()->getRenderer();
 	SDL_GetWindowSize(window, &width, &height);
 
-	TTF_Font* font = TTF_OpenFont("font.ttf", 14);
-
-	if (!font)
-	{
-		throw TTFFontException("Couldn't load \"font.ttf\"");
-	}
-
-	exitBtn = std::unique_ptr<Button>(new Button(renderer, "Esci", width - 40 - 60, 40, 60, 60, { 0xEE, 0xEE, 0xEE, 0xFF }, { 0x00, 0x00, 0x00, 0xFF }, font));
-	startBtn = std::unique_ptr<Button>(new Button(renderer, "Avvia", 40, 40, 60, 60, { 0x99, 0x99, 0x0, 0xFF }, { 0xFF, 0xFF, 0xFF, 0xFF }, font));
-
-	TTF_CloseFont(font);
-	font = nullptr;
+	SpaceGrid5x3 startBtnPos(0, 0);
+	SpaceGrid5x3 exitBtnPos(4, 0);
+	exitBtn = std::unique_ptr<ImageButton>(new ImageButton(renderer, exitBtnPos.getX(), exitBtnPos.getY(), 60, 60, { 0xEE, 0xEE, 0xEE, 0xFF }, "logout.png", 28, 28));
+	startBtn = std::unique_ptr<ImageButton>(new ImageButton(renderer, startBtnPos.getX(), startBtnPos.getY(), 60, 60, { 0x99, 0x99, 0x0, 0xFF }, "settings-white.png", 28, 28));
 
 	sineAnim = std::unique_ptr<SineWaveAnimation>(new SineWaveAnimation(renderer));
 
