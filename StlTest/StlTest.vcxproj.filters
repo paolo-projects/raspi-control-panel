@@ -15,6 +15,9 @@
       <Filter>Scenes</Filter>
     </ClCompile>
     <ClCompile Include="WavefunctionAnimation.cpp" />
+    <ClCompile Include="InteractiveGraphicsObject.cpp" />
+    <ClCompile Include="SceneManager.cpp" />
+    <ClCompile Include="Application.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Button.h" />
@@ -36,6 +39,9 @@
     </ClInclude>
     <ClInclude Include="SpaceGrid.h" />
     <ClInclude Include="WavefunctionAnimation.h" />
+    <ClInclude Include="InteractiveGraphicsObject.h" />
+    <ClInclude Include="SceneManager.h" />
+    <ClInclude Include="Application.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Scenes">

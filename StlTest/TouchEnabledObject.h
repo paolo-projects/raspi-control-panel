@@ -1,7 +1,10 @@
 #pragma once
+#include <functional>
+
 #include "GraphicsObject.h"
 
-typedef void(*TouchCallback)();
+//typedef void(*TouchCallback)();
+using TouchCallback = std::function<void(void)>;
 
 class TouchEnabledObject
 {

@@ -2,10 +2,13 @@
 #include <string>
 #include <tslib.h>
 #include <vector>
+#include <functional>
 
 #include "TouchInputException.h"
 
-using TouchEventCallback = int(*)(ts_sample_mt);
+#define TS_SETENV(x) setenv(#x, x, false);
+
+using TouchEventCallback = std::function<void(ts_sample_mt)>; // void(*)(ts_sample_mt);
 
 class TouchInput
 {
@@ -16,9 +19,13 @@ public:
 	void poll();
 private:
 	std::string device_name;
-	tsdev* ts;
-	std::vector<std::vector<ts_sample_mt>> samp_mt;
+	struct tsdev* ts;
+	ts_sample_mt** samp_mt;
 	int samples, slots, ret;
 	TouchEventCallback event_callback;
+
+	const char* TSLIB_CALIBFILE = "/etc/pointercal.tslib";
+	const char* TSLIB_CONFFILE = "/etc/ts.conf";
+	const char* TSLIB_TSDEVICE = "/dev/input/event0";
 };
 

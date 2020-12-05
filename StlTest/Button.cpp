@@ -1,15 +1,9 @@
 #include "Button.h"
 
-Button::Button(SDL_Renderer* renderer, std::string text, int x, int y, int width, int height, int fontSize, SDL_Color fillColor, SDL_Color textColor) :
-	renderer(renderer), x(x), y(y), width(width), height(height), fontSize(fontSize), fillColor(fillColor), textColor(textColor)
+Button::Button(SDL_Renderer* renderer, std::string text, int x, int y, int width, int height, SDL_Color fillColor, SDL_Color textColor, TTF_Font* font) :
+	renderer(renderer), x(x), y(y), width(width), height(height), fillColor(fillColor), textColor(textColor)
 {
 	rectangle = { x, y, width, height };
-
-	font = TTF_OpenFont("font.ttf", fontSize);
-	if (!font)
-	{
-		throw TTFFontException("Couldn't load \"font.ttf\"");
-	}
 
 	textSurface = TTF_RenderText_Solid(font, text.c_str(), textColor);
 	if (!textSurface) {

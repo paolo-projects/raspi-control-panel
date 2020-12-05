@@ -8,7 +8,8 @@
 class Button : public InteractiveGraphicsObject
 {
 public:
-	Button(SDL_Renderer* renderer, std::string text, int x, int y, int width, int height, int fontSize, SDL_Color fillColor, SDL_Color textColor);
+	Button() = delete;
+	Button(SDL_Renderer* renderer, std::string text, int x, int y, int width, int height, SDL_Color fillColor, SDL_Color textColor, TTF_Font* font);
 	~Button();
 	void draw(uint32_t time) override;
 	int getX() const override;
@@ -17,7 +18,7 @@ public:
 	int getHeight() const override;
 private:
 	SDL_Renderer* renderer;
-	int x, y, width, height, fontSize;
+	int x, y, width, height;
 	bool touchEnabled = true, propagateInter = false;
 	SDL_Rect rectangle, textPosition;
 	SDL_Color fillColor;

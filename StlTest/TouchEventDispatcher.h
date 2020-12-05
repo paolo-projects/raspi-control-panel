@@ -4,22 +4,14 @@
 
 #include "InteractiveGraphicsObject.h"
 #include "GraphicsScene.h"
+#include "SceneManager.h"
 
 class TouchEventDispatcher
 {
 public:
-	TouchEventDispatcher(GraphicsScene** scenePtr);
-	void setGraphicsScene(GraphicsScene** scenePtr);
-	/*TouchEventDispatcher(const std::vector<TouchEnabledObject*>& objects);
-	void addObject(TouchEnabledObject* object);
-	void addObjects(TouchEnabledObject** objects, size_t number);
-	void addObjects(const std::vector<TouchEnabledObject*>& objects);
-	void removeObject(TouchEnabledObject* object);
-	void removeObject(int index);
-	void clearObjects();*/
+	TouchEventDispatcher(SceneManager& sceneManager);
 	void dispatchTouchEvent(int x, int y);
 private:
-	//std::vector<TouchEnabledObject*> touchEnabledObjects{};
-	GraphicsScene** graphicsScenePtr = nullptr;
+	SceneManager& sceneManager;
 };
 
