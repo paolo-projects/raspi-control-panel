@@ -3,18 +3,21 @@
 #include <memory>
 
 #include "Application.h"
-#include "GraphicsScene.h"
 #include "TouchEnabledObject.h"
-#include "ImageButton.h"
-#include "SineWaveAnimation.h"
 #include "SceneManager.h"
+
+class SamplingScene;
+class ImageButton;
+class SineWaveAnimation;
 
 class MainScene : public GraphicsScene
 {
 public:
-	MainScene(SceneManager& sceneManager);
+	MainScene();
+	~MainScene();
 private:
-	std::unique_ptr<ImageButton> exitBtn, startBtn;
-	std::unique_ptr<SineWaveAnimation> sineAnim;
+	SamplingScene* samplingScene;
+	ImageButton* exitBtn, * startBtn;
+	SineWaveAnimation* sineAnim;
 };
 

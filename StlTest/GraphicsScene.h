@@ -15,7 +15,7 @@ class SceneManager;
 class GraphicsScene : public GraphicsObject
 {
 public:
-	GraphicsScene(SceneManager& sceneManager);
+	GraphicsScene();
 	GraphicsScene(const GraphicsScene& copy) = delete;
 	GraphicsScene(const GraphicsScene&& move) = delete;
 	GraphicsScene operator=(const GraphicsScene& copy) = delete;
@@ -28,10 +28,7 @@ public:
 	void removeObject(int index);
 	void clearObjects();
 	void draw(uint32_t time) override;
-protected:
-	SceneManager& getSceneManager();
 private:
 	std::vector<GraphicsObject*> objects;
-	SceneManager& sceneManager;
 };
 

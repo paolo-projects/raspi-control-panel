@@ -12,20 +12,22 @@
     <ClCompile Include="SamplingScene.cpp">
       <Filter>Scenes</Filter>
     </ClCompile>
-    <ClCompile Include="InteractiveGraphicsObject.cpp" />
     <ClCompile Include="SceneManager.cpp" />
     <ClCompile Include="Application.cpp" />
-    <ClCompile Include="Button.cpp">
-      <Filter>GraphicObjects</Filter>
-    </ClCompile>
     <ClCompile Include="SineWaveAnimation.cpp">
-      <Filter>GraphicObjects</Filter>
+      <Filter>GraphicObjects\Animated</Filter>
     </ClCompile>
     <ClCompile Include="WavefunctionAnimation.cpp">
-      <Filter>GraphicObjects</Filter>
+      <Filter>GraphicObjects\Animated</Filter>
+    </ClCompile>
+    <ClCompile Include="Button.cpp">
+      <Filter>GraphicObjects\Controls</Filter>
     </ClCompile>
     <ClCompile Include="ImageButton.cpp">
-      <Filter>GraphicObjects</Filter>
+      <Filter>GraphicObjects\Controls</Filter>
+    </ClCompile>
+    <ClCompile Include="Text.cpp">
+      <Filter>GraphicObjects\Controls</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -48,19 +50,22 @@
     <ClInclude Include="InteractiveGraphicsObject.h" />
     <ClInclude Include="SceneManager.h" />
     <ClInclude Include="Application.h" />
-    <ClInclude Include="Button.h">
-      <Filter>GraphicObjects</Filter>
+    <ClInclude Include="IMGException.h" />
+    <ClInclude Include="WavefunctionAnimation.h">
+      <Filter>GraphicObjects\Animated</Filter>
     </ClInclude>
     <ClInclude Include="SineWaveAnimation.h">
-      <Filter>GraphicObjects</Filter>
+      <Filter>GraphicObjects\Animated</Filter>
     </ClInclude>
-    <ClInclude Include="WavefunctionAnimation.h">
-      <Filter>GraphicObjects</Filter>
+    <ClInclude Include="Button.h">
+      <Filter>GraphicObjects\Controls</Filter>
     </ClInclude>
     <ClInclude Include="ImageButton.h">
-      <Filter>GraphicObjects</Filter>
+      <Filter>GraphicObjects\Controls</Filter>
     </ClInclude>
-    <ClInclude Include="IMGException.h" />
+    <ClInclude Include="Text.h">
+      <Filter>GraphicObjects\Controls</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Scenes">
@@ -68,6 +73,12 @@
     </Filter>
     <Filter Include="GraphicObjects">
       <UniqueIdentifier>{4f281d02-6dcf-407a-a244-e3b350948caa}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GraphicObjects\Animated">
+      <UniqueIdentifier>{8a9d4e30-4968-457a-adf4-d82e3b98142d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GraphicObjects\Controls">
+      <UniqueIdentifier>{ac05dcd2-db53-4ba5-bc37-b84629a03840}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

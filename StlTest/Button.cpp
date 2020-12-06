@@ -1,7 +1,7 @@
 #include "Button.h"
 
-Button::Button(SDL_Renderer* renderer, const char* text, int x, int y, int width, int height, SDL_Color fillColor, SDL_Color textColor, TTF_Font* font) :
-	renderer(renderer), x(x), y(y), width(width), height(height), fillColor(fillColor), textColor(textColor)
+Button::Button(const char* text, int x, int y, int width, int height, SDL_Color fillColor, SDL_Color textColor, TTF_Font* font) :
+	renderer(Application::getCurrent()->getRenderer()), x(x), y(y), width(width), height(height), fillColor(fillColor), textColor(textColor)
 {
 	rectangle = { x, y, width, height };
 

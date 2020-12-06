@@ -1,7 +1,6 @@
 #include "GraphicsScene.h"
 
-GraphicsScene::GraphicsScene(SceneManager& sceneManager) :
-	sceneManager(sceneManager)
+GraphicsScene::GraphicsScene()
 {
 }
 
@@ -45,9 +44,4 @@ void GraphicsScene::draw(uint32_t time)
 	for (GraphicsObject* object : objects) {
 		object->draw(time);
 	}
-}
-
-SceneManager& GraphicsScene::getSceneManager()
-{
-	return sceneManager;
 }

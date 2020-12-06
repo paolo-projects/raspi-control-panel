@@ -135,7 +135,6 @@ int Application::run()
 
 void Application::MainLoop()
 {
-	SceneManager sceneManager;
 	TouchEventDispatcher touchEventDispatcher(sceneManager);
 
 	Window mainWindow(width, height, bgColor);
@@ -146,11 +145,9 @@ void Application::MainLoop()
 	window = mainWindow.getWindowObject();
 	renderer = mainWindow.getRenderer();
 
-	MainScene mainScene(sceneManager);
-	SamplingScene samplingScene(sceneManager);
+	MainScene mainScene;
 
-	sceneManager.registerScene("MainScene", mainScene);
-	sceneManager.registerScene("SamplingScene", samplingScene);
+	sceneManager.registerScene("MainScene", &mainScene);
 
 	sceneManager.setCurrentScene("MainScene");
 
@@ -193,6 +190,11 @@ SDL_Window* Application::getWindow()
 SDL_Renderer* Application::getRenderer()
 {
 	return application->renderer;
+}
+
+SceneManager& Application::getSceneManager()
+{
+	return sceneManager;
 }
 
 void Application::exit()

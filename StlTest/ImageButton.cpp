@@ -1,6 +1,6 @@
 #include "ImageButton.h"
-ImageButton::ImageButton(SDL_Renderer* renderer, int x, int y, int width, int height, SDL_Color fillColor, std::string imageFile) :
-	renderer(renderer), x(x), y(y), width(width), height(height), fillColor(fillColor), imageFile(imageFile)
+ImageButton::ImageButton(int x, int y, int width, int height, SDL_Color fillColor, std::string imageFile) :
+	renderer(Application::getCurrent()->getRenderer()), x(x), y(y), width(width), height(height), fillColor(fillColor), imageFile(imageFile)
 {
 	rectangle = { x, y, width, height };
 
@@ -18,8 +18,8 @@ ImageButton::ImageButton(SDL_Renderer* renderer, int x, int y, int width, int he
 	imgPosition = { x + marginHor, y + marginVert, imgWidth, imgHeight };
 }
 
-ImageButton::ImageButton(SDL_Renderer* renderer, int x, int y, int width, int height, SDL_Color fillColor, std::string imageFile, int imgWidth, int imgHeight) :
-	renderer(renderer), x(x), y(y), width(width), height(height), fillColor(fillColor), imageFile(imageFile)
+ImageButton::ImageButton(int x, int y, int width, int height, SDL_Color fillColor, std::string imageFile, int imgWidth, int imgHeight) :
+	renderer(Application::getCurrent()->getRenderer()), x(x), y(y), width(width), height(height), fillColor(fillColor), imageFile(imageFile)
 {
 	rectangle = { x, y, width, height };
 

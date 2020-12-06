@@ -15,7 +15,8 @@ public:
 	~SceneManager();
 	void setCurrentScene(std::string sceneName);
 	GraphicsScene* getCurrentScene();
-	void registerScene(const std::string& sceneName, GraphicsScene& scene);
+	void registerScene(const std::string& sceneName, GraphicsScene* scene);
+	void unregisterScene(GraphicsScene* scene);
 	void unregisterScene(const std::string& sceneName);
 private:
 	GraphicsScene* currentScene;

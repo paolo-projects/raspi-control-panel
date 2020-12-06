@@ -32,6 +32,7 @@ public:
 	bool isRunning();
 	SDL_Window* getWindow();
 	SDL_Renderer* getRenderer();
+	SceneManager& getSceneManager();
 	void exit();
 
 	static Application* getCurrent();
@@ -42,6 +43,7 @@ private:
 	void DisableTTYCursor();
 	void EnableTTYCursor();
 
+	SceneManager sceneManager;
 	bool running = true;
 	int width, height;
 	SDL_Color bgColor;

@@ -2,6 +2,7 @@
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_image.h>
 
+#include "Application.h"
 #include "InteractiveGraphicsObject.h"
 #include "IMGException.h"
 
@@ -10,8 +11,8 @@ class ImageButton :
 {
 public:
 	ImageButton() = delete;
-	ImageButton(SDL_Renderer* renderer, int x, int y, int width, int height, SDL_Color fillColor, std::string imageFile);
-	ImageButton(SDL_Renderer* renderer, int x, int y, int width, int height, SDL_Color fillColor, std::string imageFile, int imgWidth, int imgHeight);
+	ImageButton(int x, int y, int width, int height, SDL_Color fillColor, std::string imageFile);
+	ImageButton(int x, int y, int width, int height, SDL_Color fillColor, std::string imageFile, int imgWidth, int imgHeight);
 	~ImageButton();
 	void draw(uint32_t time) override;
 	int getX() const override;

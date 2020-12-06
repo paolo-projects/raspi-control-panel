@@ -2,13 +2,14 @@
 #include <SDL2/SDL.h>
 #include <vector>
 
+#include "Application.h"
 #include "TouchEnabledObject.h"
 #include "InteractiveGraphicsObject.h"
 
 class SineWaveAnimation : public InteractiveGraphicsObject
 {
 public:
-	SineWaveAnimation(SDL_Renderer* renderer);
+	SineWaveAnimation();
 	void draw(uint32_t time) override;
 	int getX() const;
 	int getY() const;

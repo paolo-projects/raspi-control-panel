@@ -4,13 +4,14 @@
 #include <vector>
 #include <array>
 
+#include "Application.h"
 #include "TouchEnabledObject.h"
 #include "InteractiveGraphicsObject.h"
 
 class WavefunctionAnimation : public InteractiveGraphicsObject
 {
 public:
-	WavefunctionAnimation(SDL_Renderer* renderer);
+	WavefunctionAnimation();
 	void draw(uint32_t time) override;
 	int getX() const;
 	int getY() const;

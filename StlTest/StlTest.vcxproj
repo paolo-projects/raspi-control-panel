@@ -79,12 +79,12 @@
     <ClCompile Include="Button.cpp" />
     <ClCompile Include="GraphicsScene.cpp" />
     <ClCompile Include="ImageButton.cpp" />
-    <ClCompile Include="InteractiveGraphicsObject.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="MainScene.cpp" />
     <ClCompile Include="SamplingScene.cpp" />
     <ClCompile Include="SceneManager.cpp" />
     <ClCompile Include="SineWaveAnimation.cpp" />
+    <ClCompile Include="Text.cpp" />
     <ClCompile Include="TouchEventDispatcher.cpp" />
     <ClCompile Include="TouchInput.cpp" />
     <ClCompile Include="WavefunctionAnimation.cpp" />
@@ -104,6 +104,7 @@
     <ClInclude Include="SDLException.h" />
     <ClInclude Include="SineWaveAnimation.h" />
     <ClInclude Include="SpaceGrid.h" />
+    <ClInclude Include="Text.h" />
     <ClInclude Include="TouchEnabledObject.h" />
     <ClInclude Include="TouchEventDispatcher.h" />
     <ClInclude Include="TouchInput.h" />

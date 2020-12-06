@@ -1,7 +1,7 @@
 #include "WavefunctionAnimation.h"
 
-WavefunctionAnimation::WavefunctionAnimation(SDL_Renderer* renderer)
-	: renderer(renderer)
+WavefunctionAnimation::WavefunctionAnimation()
+	: renderer(Application::getCurrent()->getRenderer())
 {
 	for (int i = 0; i < FRAMES; i++) {
 		points[i].resize(WIDTH);
@@ -14,7 +14,7 @@ WavefunctionAnimation::WavefunctionAnimation(SDL_Renderer* renderer)
 
 void WavefunctionAnimation::draw(uint32_t time)
 {
-	int frame = (int)std::round((time % (2*REVOLUTION_TIME)) / (double)(2*REVOLUTION_TIME) * (FRAMES*2 - 1));
+	int frame = (int)std::round((time % (2 * REVOLUTION_TIME)) / (double)(2 * REVOLUTION_TIME) * (FRAMES * 2 - 1));
 	if (frame > FRAMES - 1) {
 		frame = (FRAMES * 2 - 1) - frame;
 	}

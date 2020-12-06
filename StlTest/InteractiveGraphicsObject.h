@@ -8,5 +8,7 @@
 */
 class InteractiveGraphicsObject : public GraphicsObject, public TouchEnabledObject
 {
+public:
+	virtual ~InteractiveGraphicsObject() = default;
 };
 

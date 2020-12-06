@@ -5,17 +5,19 @@
 #include "Application.h"
 #include "GraphicsScene.h"
 #include "Button.h"
-#include "ImageButton.h"
-#include "WavefunctionAnimation.h"
 #include "SpaceGrid.h"
 #include "SceneManager.h"
+
+class ImageButton;
+class WavefunctionAnimation;
 
 class SamplingScene : public GraphicsScene
 {
 public:
-	SamplingScene(SceneManager& sceneManager);
+	SamplingScene();
+	~SamplingScene();
 private:
-	std::unique_ptr<ImageButton> measureBtn, sampleBtn, backBtn;
-	std::unique_ptr<WavefunctionAnimation> wavefunAnim;
+	ImageButton* measureBtn, * sampleBtn, * backBtn;
+	WavefunctionAnimation* wavefunAnim;
 };
 

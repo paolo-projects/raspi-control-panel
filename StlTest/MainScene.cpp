@@ -1,33 +1,51 @@
 #include "MainScene.h"
+#include "ImageButton.h"
+#include "SineWaveAnimation.h"
 
-MainScene::MainScene(SceneManager& sceneManager) :
-	GraphicsScene(sceneManager)
+MainScene::MainScene()
 {
+	SceneManager& sceneManager = Application::getCurrent()->getSceneManager();
 	int width, height;
 	SDL_Window* window = Application::getCurrent()->getWindow();
-	SDL_Renderer* renderer = Application::getCurrent()->getRenderer();
 	SDL_GetWindowSize(window, &width, &height);
 
 	SpaceGrid5x3 startBtnPos(0, 0);
 	SpaceGrid5x3 exitBtnPos(4, 0);
-	exitBtn = std::unique_ptr<ImageButton>(new ImageButton(renderer, exitBtnPos.getX(), exitBtnPos.getY(), 60, 60, { 0xEE, 0xEE, 0xEE, 0xFF }, "logout.png", 28, 28));
-	startBtn = std::unique_ptr<ImageButton>(new ImageButton(renderer, startBtnPos.getX(), startBtnPos.getY(), 60, 60, { 0x99, 0x99, 0x0, 0xFF }, "settings-white.png", 28, 28));
+	exitBtn = new ImageButton(
+		exitBtnPos.getX(), exitBtnPos.getY(), exitBtnPos.getWidth(),
+		exitBtnPos.getHeight(), { 0xEE, 0xEE, 0xEE, 0xFF }, "logout.png", 28, 28
+	);
+	startBtn = new ImageButton(
+		startBtnPos.getX(), startBtnPos.getY(), startBtnPos.getWidth(),
+		startBtnPos.getHeight(), { 0x99, 0x99, 0x0, 0xFF }, "settings-white.png", 28, 28
+	);
 
-	sineAnim = std::unique_ptr<SineWaveAnimation>(new SineWaveAnimation(renderer));
+	sineAnim = new SineWaveAnimation();
 
 	auto exitBtnCallback = []() {
 		Application::getCurrent()->exit();
 	};
 
 	exitBtn->setTouchCallback(exitBtnCallback);
-	addObject(exitBtn.get());
+	addObject(exitBtn);
 
 	auto startBtnPress = [&sceneManager]() {
 		sceneManager.setCurrentScene("SamplingScene");
 	};
 
 	startBtn->setTouchCallback(startBtnPress);
-	addObject(startBtn.get());
+	addObject(startBtn);
 
-	addObject(sineAnim.get());
+	addObject(sineAnim);
+
+	samplingScene = new SamplingScene();
+	sceneManager.registerScene("SamplingScene", samplingScene);
+}
+
+MainScene::~MainScene() {
+	Application::getCurrent()->getSceneManager().unregisterScene(samplingScene);
+	delete startBtn;
+	delete exitBtn;
+	delete sineAnim;
+	delete samplingScene;
 }

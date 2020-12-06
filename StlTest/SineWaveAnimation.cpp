@@ -1,7 +1,7 @@
 #include "SineWaveAnimation.h"
 
-SineWaveAnimation::SineWaveAnimation(SDL_Renderer* renderer)
-	: renderer(renderer)
+SineWaveAnimation::SineWaveAnimation()
+	: renderer(Application::getCurrent()->getRenderer())
 {
 	points.resize(WIDTH + ADDITIONAL_PIXELS);
 	for (int i = 0; i < 480 + ADDITIONAL_PIXELS; i++) {
