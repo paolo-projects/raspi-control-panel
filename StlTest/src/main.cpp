@@ -1,4 +1,5 @@
 #include <SDL2/SDL.h>
+#include "signal.h"
 #include "Application.h"
 
 constexpr auto S_WIDTH = 480;
@@ -9,16 +10,16 @@ constexpr auto TOUCH_DEV = "/dev/input/event0";
 
 constexpr auto FPS_LIMIT = 30;
 
-constexpr SDL_Color BACKGROUND_COLOR = { 0x00, 0x00, 0x00, 0xFF };
+constexpr SDL_Color BACKGROUND_COLOR = {0x00, 0x00, 0x00, 0xFF};
 
-Application* currentApp;
+Application *currentApp;
 
 void signal_handler(int signal)
 {
 	currentApp->exit();
 }
 
-int main(int argc, char** argv)
+int main(int argc, char **argv)
 {
 	try
 	{
@@ -31,7 +32,7 @@ int main(int argc, char** argv)
 
 		app.run();
 	}
-	catch (const std::exception& exc)
+	catch (const std::exception &exc)
 	{
 		fprintf(stderr, "Error occurred: %s\n", exc.what());
 		return 1;
