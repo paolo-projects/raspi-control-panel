@@ -4,6 +4,14 @@ GraphicsScene::GraphicsScene()
 {
 }
 
+GraphicsScene::~GraphicsScene()
+{
+	for (GraphicsObject* object : objects)
+	{
+		delete object;
+	}
+}
+
 const std::vector<GraphicsObject*> GraphicsScene::getObjects() const
 {
 	return objects;

@@ -5,6 +5,7 @@
 #include "Application.h"
 #include "TouchEnabledObject.h"
 #include "SceneManager.h"
+#include "SpaceGrid.h"
 
 class SamplingScene;
 class ImageButton;

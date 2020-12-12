@@ -29,6 +29,12 @@
     <ClCompile Include="Text.cpp">
       <Filter>GraphicObjects\Controls</Filter>
     </ClCompile>
+    <ClCompile Include="XYPlot.cpp">
+      <Filter>GraphicObjects\Controls</Filter>
+    </ClCompile>
+    <ClCompile Include="PlotScene.cpp">
+      <Filter>Scenes</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GraphicsObject.h" />
@@ -66,6 +72,35 @@
     <ClInclude Include="Text.h">
       <Filter>GraphicObjects\Controls</Filter>
     </ClInclude>
+    <ClInclude Include="Color.h">
+      <Filter>Wrappers</Filter>
+    </ClInclude>
+    <ClInclude Include="Point.h">
+      <Filter>Wrappers</Filter>
+    </ClInclude>
+    <ClInclude Include="Rect.h">
+      <Filter>Wrappers</Filter>
+    </ClInclude>
+    <ClInclude Include="Font.h">
+      <Filter>Wrappers</Filter>
+    </ClInclude>
+    <ClInclude Include="TouchCPException.h" />
+    <ClInclude Include="XiaolinWu.h">
+      <Filter>Antialiasing</Filter>
+    </ClInclude>
+    <ClInclude Include="XYPlot.h">
+      <Filter>GraphicObjects\Controls</Filter>
+    </ClInclude>
+    <ClInclude Include="PlotScene.h">
+      <Filter>Scenes</Filter>
+    </ClInclude>
+    <ClInclude Include="optional.h" />
+    <ClInclude Include="CCDMeasure.h">
+      <Filter>CCDMeasure</Filter>
+    </ClInclude>
+    <ClInclude Include="CCDException.h">
+      <Filter>CCDMeasure</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Scenes">
@@ -79,6 +114,15 @@
     </Filter>
     <Filter Include="GraphicObjects\Controls">
       <UniqueIdentifier>{ac05dcd2-db53-4ba5-bc37-b84629a03840}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Wrappers">
+      <UniqueIdentifier>{b8956274-3698-44ac-8ba9-bdf88f719d5e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Antialiasing">
+      <UniqueIdentifier>{97ca02d9-7123-4580-bf5d-467e746c603e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="CCDMeasure">
+      <UniqueIdentifier>{c922e1ca-9bb0-423d-9cbf-c177489938a0}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

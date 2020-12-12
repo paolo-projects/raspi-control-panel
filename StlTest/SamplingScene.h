@@ -1,12 +1,15 @@
 #pragma once
 #include <SDL2/SDL.h>
 #include <memory>
+#include <ctime>
 
 #include "Application.h"
 #include "GraphicsScene.h"
 #include "Button.h"
 #include "SpaceGrid.h"
 #include "SceneManager.h"
+#include "PlotScene.h"
+#include "CCDMeasure.h"
 
 class ImageButton;
 class WavefunctionAnimation;
@@ -19,5 +22,6 @@ public:
 private:
 	ImageButton* measureBtn, * sampleBtn, * backBtn;
 	WavefunctionAnimation* wavefunAnim;
+	PlotScene* plotScene = nullptr;
 };
 

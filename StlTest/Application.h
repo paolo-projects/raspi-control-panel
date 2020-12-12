@@ -14,21 +14,22 @@
 #include "Window.h"
 #include "SceneManager.h"
 #include "TouchInput.h"
-#include "MainScene.h"
-#include "SamplingScene.h"
 #include "TouchEventDispatcher.h"
 #include "IMGException.h"
+#include "TTFFontException.h"
+#include "TouchCPException.h"
+#include "MainScene.h"
 
 class Application
 {
 public:
-	Application(int width, int height, SDL_Color bgColor, std::string touchInputDevice, std::string ttyDevice);
+	Application(int width, int height, SDL_Color bgColor, std::string touchInputDevice, std::string ttyDevice, int FPS_LIMIT);
 	~Application();
 
 	Application(const Application& copy) = delete;
 	Application operator=(const Application& copy) = delete;
 
-	int run();
+	void run();
 	bool isRunning();
 	SDL_Window* getWindow();
 	SDL_Renderer* getRenderer();
@@ -57,7 +58,7 @@ private:
 	static constexpr int TOUCH_DEBOUNCE_MS = 250;
 	static constexpr int SAMPLES = 5;
 	static constexpr int SLOTS = 1;
-	static constexpr int FPS = 30;
-	static constexpr unsigned int FRAMETIME = 1000 / FPS;
+	int FPS = 30;
+	unsigned int FRAMETIME = 1000 / FPS;
 };
 

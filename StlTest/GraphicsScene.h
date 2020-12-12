@@ -19,7 +19,7 @@ public:
 	GraphicsScene(const GraphicsScene& copy) = delete;
 	GraphicsScene(const GraphicsScene&& move) = delete;
 	GraphicsScene operator=(const GraphicsScene& copy) = delete;
-	virtual ~GraphicsScene() = default;
+	virtual ~GraphicsScene();
 	const std::vector<GraphicsObject*> getObjects() const;
 	void addObject(GraphicsObject* object);
 	void addObjects(GraphicsObject** toadd, size_t number);

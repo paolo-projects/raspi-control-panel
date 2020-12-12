@@ -4,26 +4,37 @@
 
 #include "Application.h"
 #include "InteractiveGraphicsObject.h"
+#include "Rect.h"
+#include "Color.h"
+#include "Font.h"
 
 class Text :
 	public InteractiveGraphicsObject
 {
 public:
-	Text(const char* text, int x, int y, int width, int height, SDL_Color textColor, TTF_Font* font);
+	Text();
 	~Text();
 	void setText(const char* text);
+	void setGeometry(Rect geom);
+	void setColor(Color c);
+	void setFontPath(const std::string& fontPath);
+	void setFontSize(int fontSize);
 	void draw(uint32_t time) override;
 	int getX() const override;
 	int getY() const override;
 	int getWidth() const override;
 	int getHeight() const override;
 private:
+	void build();
+	std::string text;
 	SDL_Renderer* renderer;
-	int x, y, width, height;
-	SDL_Color textColor;
-	TTF_Font* font;
-	SDL_Rect rectangle, textPosition;
-	SDL_Surface* textSurface;
-	SDL_Texture* textTexture;
+	Rect geometry;
+	Color textColor;
+	std::unique_ptr<Font> font;
+	Rect textPosition;
+	SDL_Surface* textSurface = nullptr;
+	SDL_Texture* textTexture = nullptr;
+	std::string fontPath;
+	int fontSize = 12;
 };
 

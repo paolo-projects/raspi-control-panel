@@ -81,6 +81,7 @@
     <ClCompile Include="ImageButton.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="MainScene.cpp" />
+    <ClCompile Include="PlotScene.cpp" />
     <ClCompile Include="SamplingScene.cpp" />
     <ClCompile Include="SceneManager.cpp" />
     <ClCompile Include="SineWaveAnimation.cpp" />
@@ -89,22 +90,32 @@
     <ClCompile Include="TouchInput.cpp" />
     <ClCompile Include="WavefunctionAnimation.cpp" />
     <ClCompile Include="Window.cpp" />
+    <ClCompile Include="XYPlot.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Application.h" />
     <ClInclude Include="Button.h" />
+    <ClInclude Include="CCDException.h" />
+    <ClInclude Include="CCDMeasure.h" />
+    <ClInclude Include="Color.h" />
+    <ClInclude Include="Font.h" />
     <ClInclude Include="GraphicsObject.h" />
     <ClInclude Include="GraphicsScene.h" />
     <ClInclude Include="ImageButton.h" />
     <ClInclude Include="IMGException.h" />
     <ClInclude Include="InteractiveGraphicsObject.h" />
     <ClInclude Include="MainScene.h" />
+    <ClInclude Include="optional.h" />
+    <ClInclude Include="PlotScene.h" />
+    <ClInclude Include="Point.h" />
+    <ClInclude Include="Rect.h" />
     <ClInclude Include="SamplingScene.h" />
     <ClInclude Include="SceneManager.h" />
     <ClInclude Include="SDLException.h" />
     <ClInclude Include="SineWaveAnimation.h" />
     <ClInclude Include="SpaceGrid.h" />
     <ClInclude Include="Text.h" />
+    <ClInclude Include="TouchCPException.h" />
     <ClInclude Include="TouchEnabledObject.h" />
     <ClInclude Include="TouchEventDispatcher.h" />
     <ClInclude Include="TouchInput.h" />
@@ -112,6 +123,8 @@
     <ClInclude Include="TTFFontException.h" />
     <ClInclude Include="WavefunctionAnimation.h" />
     <ClInclude Include="Window.h" />
+    <ClInclude Include="XiaolinWu.h" />
+    <ClInclude Include="XYPlot.h" />
   </ItemGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|ARM'">
     <Link>
