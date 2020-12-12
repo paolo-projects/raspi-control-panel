@@ -93,12 +93,24 @@ void XYPlot::setLineColor(const Color lnColor)
 
 void XYPlot::draw(uint32_t time)
 {
+	// Draw rectangle fill
 	if (backgroundColor.a != 0)
 	{
 		SDL_SetRenderDrawColor(renderer, backgroundColor.r, backgroundColor.g, backgroundColor.b, backgroundColor.a);
 		SDL_Rect sdlGeom = geometry;
 		SDL_RenderFillRect(renderer, &sdlGeom);
 	}
+	// Draw rectangle perimeter
+	SDL_SetRenderDrawColor(renderer, lineColor.r, lineColor.g, lineColor.b, lineColor.a * 0.5);
+	SDL_Point perimeter[5] = {
+		{geometry.x, geometry.y},
+		{geometry.x + geometry.width, geometry.y},
+		{geometry.x + geometry.width, geometry.y + geometry.height},
+		{geometry.x, geometry.y + geometry.height},
+		{geometry.x, geometry.y}
+	};
+	SDL_RenderDrawLines(renderer, perimeter, 5);
+	// Draw data points
 	SDL_SetRenderDrawColor(renderer, lineColor.r, lineColor.g, lineColor.b, lineColor.a);
 	SDL_RenderDrawPoints(renderer, renderedPoints.data(), renderedPoints.size());
 }

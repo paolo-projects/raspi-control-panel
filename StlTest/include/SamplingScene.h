@@ -20,6 +20,7 @@ public:
 	SamplingScene();
 	~SamplingScene();
 private:
+	float transformDataPoint(int x, float y);
 	ImageButton* measureBtn, * sampleBtn, * backBtn;
 	WavefunctionAnimation* wavefunAnim;
 	PlotScene* plotScene = nullptr;

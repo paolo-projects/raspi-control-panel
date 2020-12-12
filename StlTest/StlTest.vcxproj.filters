@@ -1,104 +1,107 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <ClCompile Include="GraphicsScene.cpp" />
-    <ClCompile Include="main.cpp" />
-    <ClCompile Include="TouchEventDispatcher.cpp" />
-    <ClCompile Include="TouchInput.cpp" />
-    <ClCompile Include="Window.cpp" />
-    <ClCompile Include="MainScene.cpp">
+    <ClCompile Include="src/GraphicsScene.cpp" />
+    <ClCompile Include="src/main.cpp" />
+    <ClCompile Include="src/TouchEventDispatcher.cpp" />
+    <ClCompile Include="src/TouchInput.cpp" />
+    <ClCompile Include="src/Window.cpp" />
+    <ClCompile Include="src/MainScene.cpp">
       <Filter>Scenes</Filter>
     </ClCompile>
-    <ClCompile Include="SamplingScene.cpp">
+    <ClCompile Include="src/SamplingScene.cpp">
       <Filter>Scenes</Filter>
     </ClCompile>
-    <ClCompile Include="SceneManager.cpp" />
-    <ClCompile Include="Application.cpp" />
-    <ClCompile Include="SineWaveAnimation.cpp">
+    <ClCompile Include="src/SceneManager.cpp" />
+    <ClCompile Include="src/Application.cpp" />
+    <ClCompile Include="src/SineWaveAnimation.cpp">
       <Filter>GraphicObjects\Animated</Filter>
     </ClCompile>
-    <ClCompile Include="WavefunctionAnimation.cpp">
+    <ClCompile Include="src/WavefunctionAnimation.cpp">
       <Filter>GraphicObjects\Animated</Filter>
     </ClCompile>
-    <ClCompile Include="Button.cpp">
+    <ClCompile Include="src/Button.cpp">
       <Filter>GraphicObjects\Controls</Filter>
     </ClCompile>
-    <ClCompile Include="ImageButton.cpp">
+    <ClCompile Include="src/ImageButton.cpp">
       <Filter>GraphicObjects\Controls</Filter>
     </ClCompile>
-    <ClCompile Include="Text.cpp">
+    <ClCompile Include="src/Text.cpp">
       <Filter>GraphicObjects\Controls</Filter>
     </ClCompile>
-    <ClCompile Include="XYPlot.cpp">
+    <ClCompile Include="src/XYPlot.cpp">
       <Filter>GraphicObjects\Controls</Filter>
     </ClCompile>
-    <ClCompile Include="PlotScene.cpp">
+    <ClCompile Include="src/PlotScene.cpp">
       <Filter>Scenes</Filter>
+    </ClCompile>
+    <ClCompile Include="src\CCDMeasure.cpp">
+      <Filter>CCDMeasure</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="GraphicsObject.h" />
-    <ClInclude Include="GraphicsScene.h" />
-    <ClInclude Include="SDLException.h" />
-    <ClInclude Include="TouchEnabledObject.h" />
-    <ClInclude Include="TouchEventDispatcher.h" />
-    <ClInclude Include="TouchInput.h" />
-    <ClInclude Include="TouchInputException.h" />
-    <ClInclude Include="TTFFontException.h" />
-    <ClInclude Include="Window.h" />
-    <ClInclude Include="MainScene.h">
+    <ClInclude Include="include/GraphicsObject.h" />
+    <ClInclude Include="include/GraphicsScene.h" />
+    <ClInclude Include="include/SDLException.h" />
+    <ClInclude Include="include/TouchEnabledObject.h" />
+    <ClInclude Include="include/TouchEventDispatcher.h" />
+    <ClInclude Include="include/TouchInput.h" />
+    <ClInclude Include="include/TouchInputException.h" />
+    <ClInclude Include="include/TTFFontException.h" />
+    <ClInclude Include="include/Window.h" />
+    <ClInclude Include="include/MainScene.h">
       <Filter>Scenes</Filter>
     </ClInclude>
-    <ClInclude Include="SamplingScene.h">
+    <ClInclude Include="include/SamplingScene.h">
       <Filter>Scenes</Filter>
     </ClInclude>
-    <ClInclude Include="SpaceGrid.h" />
-    <ClInclude Include="InteractiveGraphicsObject.h" />
-    <ClInclude Include="SceneManager.h" />
-    <ClInclude Include="Application.h" />
-    <ClInclude Include="IMGException.h" />
-    <ClInclude Include="WavefunctionAnimation.h">
+    <ClInclude Include="include/SpaceGrid.h" />
+    <ClInclude Include="include/InteractiveGraphicsObject.h" />
+    <ClInclude Include="include/SceneManager.h" />
+    <ClInclude Include="include/Application.h" />
+    <ClInclude Include="include/IMGException.h" />
+    <ClInclude Include="include/WavefunctionAnimation.h">
       <Filter>GraphicObjects\Animated</Filter>
     </ClInclude>
-    <ClInclude Include="SineWaveAnimation.h">
+    <ClInclude Include="include/SineWaveAnimation.h">
       <Filter>GraphicObjects\Animated</Filter>
     </ClInclude>
-    <ClInclude Include="Button.h">
+    <ClInclude Include="include/Button.h">
       <Filter>GraphicObjects\Controls</Filter>
     </ClInclude>
-    <ClInclude Include="ImageButton.h">
+    <ClInclude Include="include/ImageButton.h">
       <Filter>GraphicObjects\Controls</Filter>
     </ClInclude>
-    <ClInclude Include="Text.h">
+    <ClInclude Include="include/Text.h">
       <Filter>GraphicObjects\Controls</Filter>
     </ClInclude>
-    <ClInclude Include="Color.h">
+    <ClInclude Include="include/Color.h">
       <Filter>Wrappers</Filter>
     </ClInclude>
-    <ClInclude Include="Point.h">
+    <ClInclude Include="include/Point.h">
       <Filter>Wrappers</Filter>
     </ClInclude>
-    <ClInclude Include="Rect.h">
+    <ClInclude Include="include/Rect.h">
       <Filter>Wrappers</Filter>
     </ClInclude>
-    <ClInclude Include="Font.h">
+    <ClInclude Include="include/Font.h">
       <Filter>Wrappers</Filter>
     </ClInclude>
-    <ClInclude Include="TouchCPException.h" />
-    <ClInclude Include="XiaolinWu.h">
+    <ClInclude Include="include/TouchCPException.h" />
+    <ClInclude Include="include/XiaolinWu.h">
       <Filter>Antialiasing</Filter>
     </ClInclude>
-    <ClInclude Include="XYPlot.h">
+    <ClInclude Include="include/XYPlot.h">
       <Filter>GraphicObjects\Controls</Filter>
     </ClInclude>
-    <ClInclude Include="PlotScene.h">
+    <ClInclude Include="include/PlotScene.h">
       <Filter>Scenes</Filter>
     </ClInclude>
-    <ClInclude Include="optional.h" />
-    <ClInclude Include="CCDMeasure.h">
+    <ClInclude Include="include/optional.h" />
+    <ClInclude Include="include/CCDMeasure.h">
       <Filter>CCDMeasure</Filter>
     </ClInclude>
-    <ClInclude Include="CCDException.h">
+    <ClInclude Include="include/CCDException.h">
       <Filter>CCDMeasure</Filter>
     </ClInclude>
   </ItemGroup>

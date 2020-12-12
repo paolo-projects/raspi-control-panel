@@ -1,6 +1,6 @@
 # Raspi Control Panel
 
-A control panel written in C++ using the SDL library, designed to run on a 3.5 Raspberry Pi touchscreen.
+A control panel for the TCD1304 written in C++ using the SDL library, designed to run on a 3.5 Raspberry Pi touchscreen.
 
 It aims at simplifying the control of external instrumentation, and collect and optionally display data from it.
 
@@ -28,5 +28,11 @@ objects placed below them, by setting the properties through the object methods.
 The scenes have zero or more objects in them that get drawn by the main loop. The scenes do not draw anything by themselves,
 only the children objects get drawn.
 
-The object classes created as of now are simple buttons, and some animations of waves. There's also a
-grid helper class to help position the square button items on the screen in a 5x3 grid.
+The tool has been made to interface with the STM32 firmware made by Esben Rossel 
+(available at [https://tcd1304.wordpress.com/](https://tcd1304.wordpress.com/)) through UART communication.
+The devices paths are the default ones for the RaspberryPI using the RaspberryPi OS and the 
+[3.5 TFT LCD-Show drivers](https://github.com/goodtft/LCD-show) have to be installed. The touch input has to be
+at `/dev/input/event0` and the UART serial descriptor at `/dev/serial0`. You may need to change the permissions or run the tool
+as root to access the devices. The paths are for now hardcoded but I plan to let them be changed through env vars.
+
+Available graphics objects are, as of now, simple Buttons, ImageButtons, Texts, XYPlots and a couple of cool wave animations.

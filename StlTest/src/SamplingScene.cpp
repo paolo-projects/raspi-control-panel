@@ -46,10 +46,9 @@ SamplingScene::SamplingScene()
 		try {
 			auto data = CCDMeasure::measureValues("/dev/serial0", 200, 100000, false, 4);
 
-			values.resize(3694);
 			for (int i = 0; i < 3694; i++)
 			{
-				values[i] = data[i];
+				values[i] = transformDataPoint(i, data[i]);
 			}
 			plotScene = new PlotScene(values);
 			wavefunAnim->setRevolutionTime(2000);
@@ -79,4 +78,9 @@ SamplingScene::~SamplingScene()
 	if (plotScene != nullptr) {
 		delete plotScene;
 	}
+}
+
+float SamplingScene::transformDataPoint(int x, float y)
+{
+	return 4096 - y;
 }
