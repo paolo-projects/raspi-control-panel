@@ -9,7 +9,7 @@ The choice of SDL and not other X11 compatible desktop solutions is to avoid the
 The 3.5" TFT display (a waveshare-like one) grants a discrete amount of pixels to work with (320x480), and the touch interaction is quick and responsive.
 The animations, however, are sloppy because of the very low refresh rate (around 5 Hz, supply voltage dependent).
 
-<img src="https://raw.githubusercontent.com/paolo-projects/raspi-control-panel/master/examples/setup.jpg" width="520" height="300" />
+<img src="https://github.com/paolo-projects/raspi-control-panel/raw/master/examples/setup.jpg" width="520" height="300" />
 
 The code is not so bad, I tried to document it extensively. I created some wrapper classes for graphic objects, touch interaction, scenes.
 The scenes are the fundamental part of the interface. They represent a full screen view, and you are supposed to subclass the GraphicsScene class to create your own.
