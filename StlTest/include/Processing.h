@@ -12,8 +12,8 @@ public:
 	static PointT<float> GetBendPoint(const std::vector<float>& dataset);
 	/**
 	 * @brief Write the dataset to a CSV
-	 * @param dataset 
-	 * @param filename 
+	 * @param dataset
+	 * @param filename
 	*/
 	static void WriteToCSV(const std::vector<float>& dataset, const std::string& filename);
 	/**
@@ -25,4 +25,7 @@ public:
 	 * @return The transformed data point
 	*/
 	static float transformDataPoint(int x, float y);
+	static PointT<float> FirstDerivativeMethod(const std::vector<float>& dataset);
+	static PointT<float> BaselineAndTopLineMethod(const std::vector<float>& dataset);
+private:
 };

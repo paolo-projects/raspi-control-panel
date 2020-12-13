@@ -6,7 +6,6 @@ ImageButton::ImageButton()
 
 ImageButton::~ImageButton()
 {
-	printf("Called ImgButton destructor\n");
 	if (imgTexture != nullptr)
 		SDL_DestroyTexture(imgTexture);
 }

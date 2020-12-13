@@ -56,13 +56,15 @@ PlotScene::~PlotScene()
 void PlotScene::requestNewData()
 {// Measure
 	textMessage->setText("Measure in progress");
+	refreshButton->setTouchEnabled(false);
+
 	Application::runOnCurrentWorkerThread(new Task([this]()
 		{
 			std::vector<float> values;
 			values.resize(3694);
 
 			try {
-				auto data = CCDMeasure::measureValues("/dev/serial0", 200, 100000, false, 4);
+				auto data = CCDMeasure::measureValues("/dev/serial0", 500, 400000, false, 4);
 
 				values.resize(3694);
 				for (int i = 0; i < 3694; i++)
@@ -75,18 +77,24 @@ void PlotScene::requestNewData()
 				for (size_t i = 0; i < values.size(); i++)
 					xValues[i] = i;
 
-				PointT<float> bendPoint = Processing::GetBendPoint(values);
+				PointT<float> derivBendPoint = Processing::FirstDerivativeMethod(values);
+				PointT<float> baseLineBendPoint = Processing::BaselineAndTopLineMethod(values);
 
-				printf("Bend point at: X=%f Y=%f\n", bendPoint.x, bendPoint.y);
+				printf("1° Derivative: Bend point at X=%f Y=%f\n", derivBendPoint.x, derivBendPoint.y);
+				printf("Base and top lines: Bend point at X=%f Y=%f\n", baseLineBendPoint.x, baseLineBendPoint.y);
 
 				Application::runOnCurrentMainThread(new Task([this, xValues, values]() {
 					xyPlot->setData(xValues, values);
 					textMessage->setText("");
+					refreshButton->setTouchEnabled(true);
 					}));
 			}
 			catch (const CCDException& exc)
 			{
 				fprintf(stderr, "Error while reading data from device.\n%s\n", exc.what());
+				Application::runOnCurrentMainThread(new Task([this]() {
+					refreshButton->setTouchEnabled(true);
+					}));
 			}
 		}));
 }

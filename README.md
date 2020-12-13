@@ -2,8 +2,17 @@
 
 A control panel for the TCD1304 written in C++ using the SDL library, designed to run on a 3.5 Raspberry Pi touchscreen.
 
-It aims at simplifying the control of the CCD, collect and display data from it.
+The tool has been made to interface with an STM32 board running the firmware made by Esben Rossel (available at [https://tcd1304.wordpress.com/](https://tcd1304.wordpress.com/)) through UART communication.
 
+The firmware expects a 12 bytes data packet with the parameters needed to control the CCD, then it will send the ADC readings serialized in an array of 16 bit values. Refer to [Esben Rossel's blog](https://tcd1304.wordpress.com/) for a thorough explanation of the whole process.
+
+The tool will just plot the XY values received by the board, as the data processing code is still undone.
+
+The devices paths are the default ones for the RaspberryPI using the RaspberryPi OS, and the [3.5 TFT LCD-Show drivers](https://github.com/goodtft/LCD-show) has to be installed.
+The touch input device is hardcoded to `/dev/input/event0` and the UART serial descriptor to `/dev/serial0`.
+You may need to change the permissions or run the tool as root to read/write to the devices.
+
+This tool aims at simplifying the control of the CCD, collect and display data from it.
 The choice of SDL and not other X11 compatible desktop solutions is to avoid the overhead of a desktop and to have the interface quickly loaded at boot.
 
 The 3.5" TFT display (a waveshare-like one) grants a discrete amount of pixels to work with (320x480), and the touch interaction is quick and responsive.
@@ -39,12 +48,6 @@ Application::runOnCurrentWorkerThread(new Task(...)) // it's a shortcut for Appl
 ```
 
 To run code on the main thread (UI thread), so as to update UI elements, you run a task using the `runOnMainThread` method.
-
-The tool has been made to interface with the STM32 board running the firmware made by Esben Rossel (available at [https://tcd1304.wordpress.com/](https://tcd1304.wordpress.com/)) through UART communication.
-The devices paths are the default ones for the RaspberryPI using the RaspberryPi OS and the [3.5 TFT LCD-Show drivers](https://github.com/goodtft/LCD-show) have to be installed.
-The touch input device has to be at `/dev/input/event0` and the UART serial descriptor at `/dev/serial0`.
-You may need to change the permissions or run the tool as root to read/write to the devices.
-The paths are for now hardcoded but I plan to let them be changed through env vars.
 
 Available graphics objects are, as of now, simple Buttons, ImageButtons, Texts, XYPlots and a couple of cool wave animations.
 
