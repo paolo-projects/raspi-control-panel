@@ -2,14 +2,14 @@
 
 A control panel for the TCD1304 written in C++ using the SDL library, designed to run on a 3.5 Raspberry Pi touchscreen.
 
-It aims at simplifying the control of external instrumentation, and collect and optionally display data from it.
+It aims at simplifying the control of the CCD, collect and display data from it.
 
 The choice of SDL and not other X11 compatible desktop solutions is to avoid the overhead of a desktop and to have the interface quickly loaded at boot.
 
 The 3.5" TFT display (a waveshare-like one) grants a discrete amount of pixels to work with (320x480), and the touch interaction is quick and responsive.
 The animations, however, are sloppy because of the very low refresh rate (around 5 Hz, supply voltage dependent).
 
-This doesn't prevent us from using the display as a control panel to command some external instrument, and even to display data and charts on it.
+<img src="https://raw.githubusercontent.com/paolo-projects/raspi-control-panel/master/examples/setup.jpg" width="520" height="300" />
 
 The code is not so bad, I tried to document it extensively. I created some wrapper classes for graphic objects, touch interaction, scenes.
 The scenes are the fundamental part of the interface. They represent a full screen view, and you are supposed to subclass the GraphicsScene class to create your own.
