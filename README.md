@@ -47,3 +47,23 @@ You may need to change the permissions or run the tool as root to read/write to 
 The paths are for now hardcoded but I plan to let them be changed through env vars.
 
 Available graphics objects are, as of now, simple Buttons, ImageButtons, Texts, XYPlots and a couple of cool wave animations.
+
+# Compiling
+
+There's a VisualStudio project included for remote compilation on a Raspberry, and there's a Makefile in the `StlTest` folder
+
+To compile the application you need the following libraries:
+
+- libsdl2
+- libsdl2-ttf
+- libsdl2-image
+- libts
+
+Install them and then run `make`
+
+The executable expects to find some stuff in the current working directory:
+
+- a font named `font.ttf`
+- a bunch of png images to use as icons: `laser.png`, `logout.png`, `left-arrow.png`, `scale.png`, `settings.png`, `test-tube.png`
+
+Either provide your own or change the source code to your needs.

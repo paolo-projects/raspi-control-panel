@@ -114,17 +114,13 @@ void Application::run()
 
 void Application::MainLoop()
 {
-#ifdef _TOUCH_CAPABILITIES_
 	TouchEventDispatcher touchEventDispatcher(sceneManager);
-#endif
 
 	Window mainWindow(width, height, bgColor);
-#ifdef _TOUCH_CAPABILITIES_
 	TouchInput touchInput(touchInputDevice,
 		std::bind(&Application::ProcessEvents, this,
 			std::ref(touchEventDispatcher), std::placeholders::_1),
 		SAMPLES, SLOTS);
-#endif
 	window = mainWindow.getWindowObject();
 	renderer = mainWindow.getRenderer();
 
@@ -146,9 +142,7 @@ void Application::MainLoop()
 		// Timing
 		currentTicks = SDL_GetTicks();
 		// Touch input
-#ifdef _TOUCH_CAPABILITIES_
 		touchInput.poll();
-#endif
 
 		if (currentTicks - previousTicks < FRAMETIME) // Avoid stressing the CPU since the SPI screen has a very poor refresh rate
 			continue;
@@ -199,7 +193,7 @@ void Application::runOnMainThread(Task* task)
 
 SDL_Window* Application::getCurrentWindow()
 {
-	return application != nullptr ? application->getWindow() : nullptr; 
+	return application != nullptr ? application->getWindow() : nullptr;
 }
 
 SDL_Renderer* Application::getCurrentRenderer()
