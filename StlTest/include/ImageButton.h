@@ -8,15 +8,35 @@
 #include "Rect.h"
 #include "Color.h"
 
+/**
+ * @brief A simple image button
+*/
 class ImageButton :
 	public InteractiveGraphicsObject
 {
 public:
 	ImageButton();
 	~ImageButton();
+	/**
+	 * @brief Set the button geometry (position and size)
+	 * @param geom The button geometry
+	*/
 	void setGeometry(Rect geom);
+	/**
+	 * @brief Set the fill color
+	 * @param color Fill color
+	*/
 	void setFillColor(Color color);
+	/**
+	 * @brief Set the image file
+	 * @param imgFile The path to the image
+	*/
 	void setImageFile(const std::string& imgFile);
+	/**
+	 * @brief Set the image size. The image is automatically centered
+	 * @param width The image width
+	 * @param height The image height
+	*/
 	void setImageSize(int width, int height);
 	void draw(uint32_t time) override;
 	int getX() const override;

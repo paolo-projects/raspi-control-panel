@@ -5,6 +5,7 @@
 #include "XYPlot.h"
 #include "Processing.h"
 #include "CCDMeasure.h"
+#include "Text.h"
 
 class PlotScene : public GraphicsScene
 {
@@ -14,6 +15,7 @@ public:
 private:
 	void requestNewData();
 	ImageButton* backButton, * refreshButton;
+	Text* textMessage;
 	XYPlot* xyPlot;
 };
 

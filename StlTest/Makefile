@@ -1,6 +1,6 @@
 CXX = g++
 CXXFLAGS = -Wall -Wextra -pedantic -std=c++17 -g -fsanitize=address -MMD
-LDFLAGS =  -fsanitize=address
+LDFLAGS =  -fsanitize=address -pthread
 LBLIBS = -lSDL2 -lts -lSDL2_ttf -lSDL2_image
 INCLUDES = -Iinclude
 

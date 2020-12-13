@@ -4,9 +4,7 @@
 
 SamplingScene::SamplingScene()
 {
-	srand(time(NULL));
-
-	SceneManager& sceneManager = Application::getCurrent()->getSceneManager();
+	SceneManager* sceneManager = Application::getCurrentSceneManager();
 
 	SpaceGrid5x3 sampleBtnPos(0, 0);
 	sampleBtn = new ImageButton();
@@ -29,21 +27,21 @@ SamplingScene::SamplingScene()
 	backBtn->setImageSize(28, 28);
 	backBtn->setImageFile("left-arrow-white.png");
 
-	auto backBtnCallback = [&sceneManager]() {
-		sceneManager.setCurrentScene("MainScene");
+	auto backBtnCallback = [sceneManager]() {
+		sceneManager->setCurrentScene("MainScene");
 	};
 	backBtn->setTouchCallback(backBtnCallback);
 
-	auto measureBtnCallback = [this, &sceneManager]() {
+	auto measureBtnCallback = [this, sceneManager]() {
 		if (plotScene != nullptr) {
 			delete plotScene;
 		}
 
 		plotScene = new PlotScene();
 
-		sceneManager.registerScene("PlotScene", plotScene);
+		sceneManager->registerScene("PlotScene", plotScene);
 
-		sceneManager.setCurrentScene("PlotScene");
+		sceneManager->setCurrentScene("PlotScene");
 	};
 	measureBtn->setTouchCallback(measureBtnCallback);
 
@@ -57,7 +55,7 @@ SamplingScene::SamplingScene()
 
 SamplingScene::~SamplingScene()
 {
-	Application::getCurrent()->getSceneManager().unregisterScene(plotScene);
+	Application::getCurrentSceneManager()->unregisterScene(plotScene);
 	if (plotScene != nullptr) {
 		delete plotScene;
 	}

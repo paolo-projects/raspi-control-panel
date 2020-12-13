@@ -53,10 +53,10 @@
     <ClCompile Include="src\Processing.cpp">
       <Filter>Processing</Filter>
     </ClCompile>
-    <ClCompile Include="src\Task.cpp">
+    <ClCompile Include="src\WorkerThread.cpp">
       <Filter>Threading</Filter>
     </ClCompile>
-    <ClCompile Include="src\ExecutorThread.cpp">
+    <ClCompile Include="src\MainThreadTaskRunner.cpp">
       <Filter>Threading</Filter>
     </ClCompile>
   </ItemGroup>
@@ -163,7 +163,10 @@
     <ClInclude Include="include\Task.h">
       <Filter>Threading</Filter>
     </ClInclude>
-    <ClInclude Include="include\ExecutorThread.h">
+    <ClInclude Include="include\WorkerThread.h">
+      <Filter>Threading</Filter>
+    </ClInclude>
+    <ClInclude Include="include\MainThreadTaskRunner.h">
       <Filter>Threading</Filter>
     </ClInclude>
   </ItemGroup>

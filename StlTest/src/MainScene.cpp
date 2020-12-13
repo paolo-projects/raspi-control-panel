@@ -7,7 +7,7 @@ MainScene::MainScene()
 {
 	// The scene manager can be retrieved from the global application instance
 	// You can get it through the ::getCurrent() static method on the Application class
-	SceneManager& sceneManager = Application::getCurrent()->getSceneManager();
+	SceneManager* sceneManager = Application::getCurrentSceneManager();
 	int width, height;
 
 	SDL_Window* window = Application::getCurrent()->getWindow();
@@ -40,8 +40,8 @@ MainScene::MainScene()
 	startBtn->setImageSize(28, 28);
 	startBtn->setImageFile("settings-white.png");
 
-	auto startBtnPress = [&sceneManager]() {
-		sceneManager.setCurrentScene("SamplingScene");
+	auto startBtnPress = [sceneManager]() {
+		sceneManager->setCurrentScene("SamplingScene");
 	};
 
 	startBtn->setTouchCallback(startBtnPress);
@@ -51,10 +51,10 @@ MainScene::MainScene()
 	addObject(sineAnim);
 
 	samplingScene = new SamplingScene();
-	sceneManager.registerScene("SamplingScene", samplingScene);
+	sceneManager->registerScene("SamplingScene", samplingScene);
 }
 
 MainScene::~MainScene() {
-	Application::getCurrent()->getSceneManager().unregisterScene(samplingScene);
+	Application::getCurrentSceneManager()->unregisterScene(samplingScene);
 	delete samplingScene;
 }

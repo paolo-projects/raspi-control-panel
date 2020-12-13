@@ -107,7 +107,8 @@
     <SourcePath>src</SourcePath>
   </PropertyGroup>
   <ItemGroup>
-    <ClCompile Include="src\ExecutorThread.cpp" />
+    <ClCompile Include="src\MainThreadTaskRunner.cpp" />
+    <ClCompile Include="src\WorkerThread.cpp" />
     <ClCompile Include="src/Application.cpp" />
     <ClCompile Include="src/Button.cpp" />
     <ClCompile Include="src/GraphicsScene.cpp" />
@@ -126,10 +127,9 @@
     <ClCompile Include="src/XYPlot.cpp" />
     <ClCompile Include="src\CCDMeasure.cpp" />
     <ClCompile Include="src\Processing.cpp" />
-    <ClCompile Include="src\Task.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="include\ExecutorThread.h" />
+    <ClInclude Include="include\WorkerThread.h" />
     <ClInclude Include="include/Application.h" />
     <ClInclude Include="include/Button.h" />
     <ClInclude Include="include/CCDException.h" />
@@ -164,10 +164,12 @@
     <ClInclude Include="include/XYPlot.h" />
     <ClInclude Include="include\Processing.h" />
     <ClInclude Include="include\Task.h" />
+    <ClInclude Include="include\MainThreadTaskRunner.h" />
   </ItemGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|ARM'">
     <Link>
       <AdditionalDependencies>$(StlAdditionalDependencies);%(Link.AdditionalDependencies);-lSDL2;-lts;-lSDL2_ttf;-lSDL2_image</AdditionalDependencies>
+      <AdditionalOptions>-pthread</AdditionalOptions>
     </Link>
     <ClCompile>
       <PreprocessorDefinitions>_TOUCH_CAPABILITIES_</PreprocessorDefinitions>
@@ -176,6 +178,7 @@
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|ARM'">
     <Link>
       <AdditionalDependencies>$(StlAdditionalDependencies);%(Link.AdditionalDependencies);-lSDL2;-lts;-lSDL2_ttf;-lSDL2_image</AdditionalDependencies>
+      <AdditionalOptions>-pthread</AdditionalOptions>
     </Link>
     <ClCompile>
       <PreprocessorDefinitions>_TOUCH_CAPABILITIES_;NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
@@ -184,6 +187,7 @@
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">
     <Link>
       <AdditionalDependencies>$(StlAdditionalDependencies);%(Link.AdditionalDependencies);-lSDL2;-lts;-lSDL2_ttf;-lSDL2_image</AdditionalDependencies>
+      <AdditionalOptions>-pthread</AdditionalOptions>
     </Link>
     <ClCompile>
       <PreprocessorDefinitions>_TOUCH_CAPABILITIES_</PreprocessorDefinitions>
@@ -192,6 +196,7 @@
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">
     <Link>
       <AdditionalDependencies>$(StlAdditionalDependencies);%(Link.AdditionalDependencies);-lSDL2;-lts;-lSDL2_ttf;-lSDL2_image</AdditionalDependencies>
+      <AdditionalOptions>-pthread</AdditionalOptions>
     </Link>
     <ClCompile>
       <PreprocessorDefinitions>_TOUCH_CAPABILITIES_;NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
@@ -200,6 +205,7 @@
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <Link>
       <AdditionalDependencies>$(StlAdditionalDependencies);%(Link.AdditionalDependencies);-lSDL2;-lts;-lSDL2_ttf;-lSDL2_image</AdditionalDependencies>
+      <AdditionalOptions>-pthread</AdditionalOptions>
     </Link>
     <ClCompile>
       <PreprocessorDefinitions>_TOUCH_CAPABILITIES_</PreprocessorDefinitions>
@@ -208,6 +214,7 @@
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <Link>
       <AdditionalDependencies>$(StlAdditionalDependencies);%(Link.AdditionalDependencies);-lSDL2;-lts;-lSDL2_ttf;-lSDL2_image</AdditionalDependencies>
+      <AdditionalOptions>-pthread</AdditionalOptions>
     </Link>
     <ClCompile>
       <PreprocessorDefinitions>_TOUCH_CAPABILITIES_;NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
@@ -216,6 +223,7 @@
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x86'">
     <Link>
       <AdditionalDependencies>$(StlAdditionalDependencies);%(Link.AdditionalDependencies);-lSDL2;-lts;-lSDL2_ttf;-lSDL2_image</AdditionalDependencies>
+      <AdditionalOptions>-pthread</AdditionalOptions>
     </Link>
     <ClCompile>
       <PreprocessorDefinitions>_TOUCH_CAPABILITIES_</PreprocessorDefinitions>
@@ -224,6 +232,7 @@
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x86'">
     <Link>
       <AdditionalDependencies>$(StlAdditionalDependencies);%(Link.AdditionalDependencies);-lSDL2;-lts;-lSDL2_ttf;-lSDL2_image</AdditionalDependencies>
+      <AdditionalOptions>-pthread</AdditionalOptions>
     </Link>
     <ClCompile>
       <PreprocessorDefinitions>_TOUCH_CAPABILITIES_;NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>

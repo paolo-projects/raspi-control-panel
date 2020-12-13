@@ -1,6 +1,6 @@
 #include "Application.h"
 
-Application *Application::application = nullptr;
+Application* Application::application = nullptr;
 
 Application::Application(int width, int height, SDL_Color bgColor, std::string touchInputDevice, std::string ttyDevice, int FPS_LIMIT)
 	: width(width), height(height), bgColor(bgColor), touchInputDevice(touchInputDevice), ttyDevice(ttyDevice), FPS(FPS_LIMIT)
@@ -18,7 +18,7 @@ Application::~Application()
 	application = nullptr;
 }
 
-void Application::ProcessEvents(TouchEventDispatcher &touchEventDispatcher, const ts_sample_mt touch_event)
+void Application::ProcessEvents(TouchEventDispatcher& touchEventDispatcher, const ts_sample_mt touch_event)
 {
 	uint32_t nowTicks = SDL_GetTicks();
 	if (touch_event.valid && nowTicks > lastTouchEvent + TOUCH_DEBOUNCE_MS)
@@ -96,7 +96,7 @@ void Application::run()
 	{
 		MainLoop();
 	}
-	catch (const std::exception &exc)
+	catch (const std::exception& exc)
 	{
 		EnableTTYCursor();
 		IMG_Quit();
@@ -121,9 +121,9 @@ void Application::MainLoop()
 	Window mainWindow(width, height, bgColor);
 #ifdef _TOUCH_CAPABILITIES_
 	TouchInput touchInput(touchInputDevice,
-						  std::bind(&Application::ProcessEvents, this,
-									std::ref(touchEventDispatcher), std::placeholders::_1),
-						  SAMPLES, SLOTS);
+		std::bind(&Application::ProcessEvents, this,
+			std::ref(touchEventDispatcher), std::placeholders::_1),
+		SAMPLES, SLOTS);
 #endif
 	window = mainWindow.getWindowObject();
 	renderer = mainWindow.getRenderer();
@@ -140,9 +140,12 @@ void Application::MainLoop()
 
 	while (running)
 	{
+		// Run UI tasks
+		taskRunner.runTasks();
+
 		// Timing
 		currentTicks = SDL_GetTicks();
-// Touch input
+		// Touch input
 #ifdef _TOUCH_CAPABILITIES_
 		touchInput.poll();
 #endif
@@ -150,7 +153,7 @@ void Application::MainLoop()
 		if (currentTicks - previousTicks < FRAMETIME) // Avoid stressing the CPU since the SPI screen has a very poor refresh rate
 			continue;
 
-		GraphicsScene *currentScene = sceneManager.getCurrentScene();
+		GraphicsScene* currentScene = sceneManager.getCurrentScene();
 
 		if (currentScene != nullptr)
 		{
@@ -169,19 +172,54 @@ bool Application::isRunning()
 	return application->running;
 }
 
-SDL_Window *Application::getWindow()
+SDL_Window* Application::getWindow()
 {
 	return application->window;
 }
 
-SDL_Renderer *Application::getRenderer()
+SDL_Renderer* Application::getRenderer()
 {
 	return application->renderer;
 }
 
-SceneManager &Application::getSceneManager()
+SceneManager* Application::getSceneManager()
 {
-	return sceneManager;
+	return &sceneManager;
+}
+
+void Application::runOnWorkerThread(Task* task)
+{
+	workerThread.runOnWorker(task);
+}
+
+void Application::runOnMainThread(Task* task)
+{
+	taskRunner.addTask(task);
+}
+
+SDL_Window* Application::getCurrentWindow()
+{
+	return application != nullptr ? application->getWindow() : nullptr; 
+}
+
+SDL_Renderer* Application::getCurrentRenderer()
+{
+	return application != nullptr ? application->getRenderer() : nullptr;
+}
+
+SceneManager* Application::getCurrentSceneManager()
+{
+	return application != nullptr ? application->getSceneManager() : nullptr;
+}
+
+void Application::runOnCurrentWorkerThread(Task* task)
+{
+	if (application != nullptr) application->runOnWorkerThread(task);
+}
+
+void Application::runOnCurrentMainThread(Task* task)
+{
+	if (application != nullptr) application->runOnMainThread(task);
 }
 
 void Application::exit()
@@ -189,7 +227,7 @@ void Application::exit()
 	application->running = false;
 }
 
-Application *Application::getCurrent()
+Application* Application::getCurrent()
 {
 	return application;
 }

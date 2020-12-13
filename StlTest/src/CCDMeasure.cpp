@@ -49,7 +49,7 @@ std::vector<uint16_t> CCDMeasure::measureValues(const std::string& device, int s
 
 	sendTxCommand(ccd, sh, icg, continuous, averages);
 
-	usleep(1000 * 1000);
+	usleep(200 * 1000);
 
 	auto rxData = receiveData(ccd);
 

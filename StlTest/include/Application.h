@@ -19,6 +19,8 @@
 #include "TTFFontException.h"
 #include "TouchCPException.h"
 #include "MainScene.h"
+#include "WorkerThread.h"
+#include "MainThreadTaskRunner.h"
 
 /**
  * @brief The main application class. You can only initialize one instance.
@@ -61,7 +63,42 @@ public:
 	 * @brief Get the scene manager, needed to change the currently displayed scene
 	 * @return The scene manager
 	*/
-	SceneManager& getSceneManager();
+	SceneManager* getSceneManager();
+	/**
+	 * @brief Runs the given task on the worker thread. It will be deleted when done
+	 * @param task The task to run
+	*/
+	void runOnWorkerThread(Task* task);
+	/**
+	 * @brief Runs the given task on the main thread. It will be deleted when done
+	 * @param task The task to run
+	*/
+	void runOnMainThread(Task* task);
+	/**
+	 * @brief Get the SDL window object (static shortcut)
+	 * @return The SDL window object
+	*/
+	static SDL_Window* getCurrentWindow();
+	/**
+	 * @brief Get the SDL renderer object (static shortcut)
+	 * @return The SDL renderer object
+	*/
+	static SDL_Renderer* getCurrentRenderer();
+	/**
+	 * @brief Get the scene manager, needed to change the currently displayed scene (static shortcut)
+	 * @return The scene manager
+	*/
+	static SceneManager* getCurrentSceneManager();
+	/**
+	 * @brief Runs the given task on the worker thread. It will be deleted when done (static shortcut)
+	 * @param task The task to run
+	*/
+	static void runOnCurrentWorkerThread(Task* task);
+	/**
+	 * @brief Runs the given task on the main thread. It will be deleted when done (static shortcut)
+	 * @param task The task to run
+	*/
+	static void runOnCurrentMainThread(Task* task);
 	/**
 	 * @brief Exit the application
 	*/
@@ -89,6 +126,10 @@ private:
 	uint32_t lastTouchEvent;
 	std::unique_ptr<Window> mainWindow;
 	std::unique_ptr<TouchInput> touchInput;
+	// This order is important
+	MainThreadTaskRunner taskRunner;
+	WorkerThread workerThread;
+	///
 
 	static constexpr int TOUCH_DEBOUNCE_MS = 250;
 	static constexpr int SAMPLES = 5;
