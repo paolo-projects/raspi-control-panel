@@ -10,10 +10,12 @@ WorkerThread::~WorkerThread()
 	// Destructor should run from main thread
 	// We signal a new task even if we don't add any
 	// so the thread will wake up and stop the loop
-	std::lock_guard<std::mutex> lock(taskDequeMutex);
+	std::unique_lock<std::mutex> lock(taskDequeMutex);
 	isRunning = false;
 	taskDeque.clear();
 	cv.notify_one();
+	lock.unlock();
+
 	workerThread.join();
 }
 
