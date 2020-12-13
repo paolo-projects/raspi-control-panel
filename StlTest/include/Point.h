@@ -12,3 +12,8 @@ struct Point {
 		};
 	}
 };
+
+template<typename T>
+struct PointT {
+	T x, y;
+};

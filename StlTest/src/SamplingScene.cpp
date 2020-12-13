@@ -38,29 +38,12 @@ SamplingScene::SamplingScene()
 		if (plotScene != nullptr) {
 			delete plotScene;
 		}
-		wavefunAnim->setRevolutionTime(500);
-		// Measure
-		std::vector<float> values;
-		values.resize(3694);
 
-		try {
-			auto data = CCDMeasure::measureValues("/dev/serial0", 200, 100000, false, 4);
+		plotScene = new PlotScene();
 
-			for (int i = 0; i < 3694; i++)
-			{
-				values[i] = transformDataPoint(i, data[i]);
-			}
-			plotScene = new PlotScene(values);
-			wavefunAnim->setRevolutionTime(2000);
+		sceneManager.registerScene("PlotScene", plotScene);
 
-			sceneManager.registerScene("PlotScene", plotScene);
-
-			sceneManager.setCurrentScene("PlotScene");
-		}
-		catch (const CCDException& exc)
-		{
-			fprintf(stderr, "Error while reading data from device.\n%s\n", exc.what());
-		}
+		sceneManager.setCurrentScene("PlotScene");
 	};
 	measureBtn->setTouchCallback(measureBtnCallback);
 
@@ -78,9 +61,4 @@ SamplingScene::~SamplingScene()
 	if (plotScene != nullptr) {
 		delete plotScene;
 	}
-}
-
-float SamplingScene::transformDataPoint(int x, float y)
-{
-	return 4096 - y;
 }

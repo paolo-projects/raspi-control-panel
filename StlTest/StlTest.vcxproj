@@ -107,6 +107,7 @@
     <SourcePath>src</SourcePath>
   </PropertyGroup>
   <ItemGroup>
+    <ClCompile Include="src\ExecutorThread.cpp" />
     <ClCompile Include="src/Application.cpp" />
     <ClCompile Include="src/Button.cpp" />
     <ClCompile Include="src/GraphicsScene.cpp" />
@@ -124,8 +125,11 @@
     <ClCompile Include="src/Window.cpp" />
     <ClCompile Include="src/XYPlot.cpp" />
     <ClCompile Include="src\CCDMeasure.cpp" />
+    <ClCompile Include="src\Processing.cpp" />
+    <ClCompile Include="src\Task.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="include\ExecutorThread.h" />
     <ClInclude Include="include/Application.h" />
     <ClInclude Include="include/Button.h" />
     <ClInclude Include="include/CCDException.h" />
@@ -158,6 +162,8 @@
     <ClInclude Include="include/Window.h" />
     <ClInclude Include="include/XiaolinWu.h" />
     <ClInclude Include="include/XYPlot.h" />
+    <ClInclude Include="include\Processing.h" />
+    <ClInclude Include="include\Task.h" />
   </ItemGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|ARM'">
     <Link>

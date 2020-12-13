@@ -1,19 +1,13 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <ClCompile Include="src/GraphicsScene.cpp" />
     <ClCompile Include="src/main.cpp" />
-    <ClCompile Include="src/TouchEventDispatcher.cpp" />
-    <ClCompile Include="src/TouchInput.cpp" />
-    <ClCompile Include="src/Window.cpp" />
     <ClCompile Include="src/MainScene.cpp">
       <Filter>Scenes</Filter>
     </ClCompile>
     <ClCompile Include="src/SamplingScene.cpp">
       <Filter>Scenes</Filter>
     </ClCompile>
-    <ClCompile Include="src/SceneManager.cpp" />
-    <ClCompile Include="src/Application.cpp" />
     <ClCompile Include="src/SineWaveAnimation.cpp">
       <Filter>GraphicObjects\Animated</Filter>
     </ClCompile>
@@ -38,28 +32,41 @@
     <ClCompile Include="src\CCDMeasure.cpp">
       <Filter>CCDMeasure</Filter>
     </ClCompile>
+    <ClCompile Include="src/Application.cpp">
+      <Filter>Core</Filter>
+    </ClCompile>
+    <ClCompile Include="src/GraphicsScene.cpp">
+      <Filter>Core</Filter>
+    </ClCompile>
+    <ClCompile Include="src/SceneManager.cpp">
+      <Filter>Core</Filter>
+    </ClCompile>
+    <ClCompile Include="src/TouchEventDispatcher.cpp">
+      <Filter>Core</Filter>
+    </ClCompile>
+    <ClCompile Include="src/TouchInput.cpp">
+      <Filter>Core</Filter>
+    </ClCompile>
+    <ClCompile Include="src/Window.cpp">
+      <Filter>Core</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Processing.cpp">
+      <Filter>Processing</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Task.cpp">
+      <Filter>Threading</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ExecutorThread.cpp">
+      <Filter>Threading</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="include/GraphicsObject.h" />
-    <ClInclude Include="include/GraphicsScene.h" />
-    <ClInclude Include="include/SDLException.h" />
-    <ClInclude Include="include/TouchEnabledObject.h" />
-    <ClInclude Include="include/TouchEventDispatcher.h" />
-    <ClInclude Include="include/TouchInput.h" />
-    <ClInclude Include="include/TouchInputException.h" />
-    <ClInclude Include="include/TTFFontException.h" />
-    <ClInclude Include="include/Window.h" />
     <ClInclude Include="include/MainScene.h">
       <Filter>Scenes</Filter>
     </ClInclude>
     <ClInclude Include="include/SamplingScene.h">
       <Filter>Scenes</Filter>
     </ClInclude>
-    <ClInclude Include="include/SpaceGrid.h" />
-    <ClInclude Include="include/InteractiveGraphicsObject.h" />
-    <ClInclude Include="include/SceneManager.h" />
-    <ClInclude Include="include/Application.h" />
-    <ClInclude Include="include/IMGException.h" />
     <ClInclude Include="include/WavefunctionAnimation.h">
       <Filter>GraphicObjects\Animated</Filter>
     </ClInclude>
@@ -87,7 +94,6 @@
     <ClInclude Include="include/Font.h">
       <Filter>Wrappers</Filter>
     </ClInclude>
-    <ClInclude Include="include/TouchCPException.h" />
     <ClInclude Include="include/XiaolinWu.h">
       <Filter>Antialiasing</Filter>
     </ClInclude>
@@ -97,12 +103,68 @@
     <ClInclude Include="include/PlotScene.h">
       <Filter>Scenes</Filter>
     </ClInclude>
-    <ClInclude Include="include/optional.h" />
     <ClInclude Include="include/CCDMeasure.h">
       <Filter>CCDMeasure</Filter>
     </ClInclude>
     <ClInclude Include="include/CCDException.h">
       <Filter>CCDMeasure</Filter>
+    </ClInclude>
+    <ClInclude Include="include/Application.h">
+      <Filter>Core</Filter>
+    </ClInclude>
+    <ClInclude Include="include/GraphicsObject.h">
+      <Filter>Core</Filter>
+    </ClInclude>
+    <ClInclude Include="include/GraphicsScene.h">
+      <Filter>Core</Filter>
+    </ClInclude>
+    <ClInclude Include="include/IMGException.h">
+      <Filter>Core</Filter>
+    </ClInclude>
+    <ClInclude Include="include/InteractiveGraphicsObject.h">
+      <Filter>Core</Filter>
+    </ClInclude>
+    <ClInclude Include="include/optional.h">
+      <Filter>Core</Filter>
+    </ClInclude>
+    <ClInclude Include="include/SceneManager.h">
+      <Filter>Core</Filter>
+    </ClInclude>
+    <ClInclude Include="include/SDLException.h">
+      <Filter>Core</Filter>
+    </ClInclude>
+    <ClInclude Include="include/SpaceGrid.h">
+      <Filter>Core</Filter>
+    </ClInclude>
+    <ClInclude Include="include/TouchCPException.h">
+      <Filter>Core</Filter>
+    </ClInclude>
+    <ClInclude Include="include/TouchEnabledObject.h">
+      <Filter>Core</Filter>
+    </ClInclude>
+    <ClInclude Include="include/TouchEventDispatcher.h">
+      <Filter>Core</Filter>
+    </ClInclude>
+    <ClInclude Include="include/TouchInput.h">
+      <Filter>Core</Filter>
+    </ClInclude>
+    <ClInclude Include="include/TouchInputException.h">
+      <Filter>Core</Filter>
+    </ClInclude>
+    <ClInclude Include="include/TTFFontException.h">
+      <Filter>Core</Filter>
+    </ClInclude>
+    <ClInclude Include="include/Window.h">
+      <Filter>Core</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Processing.h">
+      <Filter>Processing</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Task.h">
+      <Filter>Threading</Filter>
+    </ClInclude>
+    <ClInclude Include="include\ExecutorThread.h">
+      <Filter>Threading</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -126,6 +188,15 @@
     </Filter>
     <Filter Include="CCDMeasure">
       <UniqueIdentifier>{c922e1ca-9bb0-423d-9cbf-c177489938a0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Core">
+      <UniqueIdentifier>{d5d45961-fba6-4751-8b3a-56861d5de42f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Threading">
+      <UniqueIdentifier>{7350b615-223e-4b37-90a3-226d6024ff76}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Processing">
+      <UniqueIdentifier>{0f284924-bcf1-426c-b002-1897d8d6c372}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

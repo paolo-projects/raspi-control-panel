@@ -20,22 +20,57 @@
 #include "TouchCPException.h"
 #include "MainScene.h"
 
+/**
+ * @brief The main application class. You can only initialize one instance.
+ * Typically, you instanciate it in main() and then call run()
+*/
 class Application
 {
 public:
+	/**
+	 * @brief Create an application
+	 * @param width The window width
+	 * @param height The window height
+	 * @param bgColor The background color
+	 * @param touchInputDevice The path to the touch device (e.g. /dev/input/event0)
+	 * @param ttyDevice The path to the UART device (e.g. /dev/ttyS0)
+	 * @param FPS_LIMIT The framerate limit, to avoid stressing the CPU for low Hz displays
+	*/
 	Application(int width, int height, SDL_Color bgColor, std::string touchInputDevice, std::string ttyDevice, int FPS_LIMIT);
 	~Application();
 
 	Application(const Application& copy) = delete;
 	Application operator=(const Application& copy) = delete;
 
+	/**
+	 * @brief Start the application
+	*/
 	void run();
 	bool isRunning();
+	/**
+	 * @brief Get the SDL window object
+	 * @return The SDL window object
+	*/
 	SDL_Window* getWindow();
+	/**
+	 * @brief Get the SDL renderer object
+	 * @return The SDL renderer object
+	*/
 	SDL_Renderer* getRenderer();
+	/**
+	 * @brief Get the scene manager, needed to change the currently displayed scene
+	 * @return The scene manager
+	*/
 	SceneManager& getSceneManager();
+	/**
+	 * @brief Exit the application
+	*/
 	void exit();
 
+	/**
+	 * @brief Get the currently running application, or null if none is available
+	 * @return The application
+	*/
 	static Application* getCurrent();
 private:
 	static Application* application;

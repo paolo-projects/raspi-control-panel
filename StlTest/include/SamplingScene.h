@@ -9,7 +9,6 @@
 #include "SpaceGrid.h"
 #include "SceneManager.h"
 #include "PlotScene.h"
-#include "CCDMeasure.h"
 
 class ImageButton;
 class WavefunctionAnimation;
