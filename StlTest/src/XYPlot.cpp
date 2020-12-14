@@ -123,7 +123,7 @@ void XYPlot::buildPoints()
 		float xScaler = geometry.width / (min_max_x.second - min_max_x.first);
 		float yScaler = geometry.height / (min_max_y.second - min_max_y.first);
 
-		const auto findInDataset = [this](int x, int y)
+		/*const auto findInDataset = [this](int x, int y)
 		{
 			for (const auto& val : renderedPoints)
 			{
@@ -131,7 +131,7 @@ void XYPlot::buildPoints()
 					return true;
 			}
 			return false;
-		};
+		};*/
 
 		const int yTop = geometry.y + geometry.height;
 
@@ -140,10 +140,15 @@ void XYPlot::buildPoints()
 			int xPnt = std::round((xValues[i] - min_max_x.first) * xScaler + min_max_x.first + geometry.x);
 			int yPnt = std::round((((min_max_y.second - yValues[i]) - min_max_y.first) * yScaler + min_max_y.first) + geometry.y);
 
+			/* 
+			 * Drawing multiple times the same point is less harmful than iterating over the entire dataset for each X,Y pair
 			if (!findInDataset(xPnt, yPnt))
 			{
+			*/
 				renderedPoints.emplace_back(SDL_Point{ xPnt, yPnt });
+			/*
 			}
+			*/
 		}
 	}
 }
