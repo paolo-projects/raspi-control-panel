@@ -3,20 +3,21 @@
 #include <memory>
 #include <ctime>
 
-#include "Application.h"
-#include "GraphicsScene.h"
-#include "Button.h"
-#include "SpaceGrid.h"
-#include "SceneManager.h"
+#include <TouchCP/Application.h>
+#include <TouchCP/GraphicsScene.h>
+#include <TouchCP/Button.h>
+#include <TouchCP/SpaceGrid.h>
+#include <TouchCP/SceneManager.h>
 #include "PlotScene.h"
 
 class ImageButton;
 class WavefunctionAnimation;
+class MainScene;
 
 class SamplingScene : public GraphicsScene
 {
 public:
-	SamplingScene();
+	SamplingScene(MainScene* parent);
 	~SamplingScene();
 private:
 	float transformDataPoint(int x, float y);

@@ -1,6 +1,7 @@
 #include "PlotScene.h"
+#include "SamplingScene.h"
 
-PlotScene::PlotScene()
+PlotScene::PlotScene(SamplingScene* parent)
 {
 	auto sceneManager = Application::getCurrentSceneManager();
 
@@ -21,9 +22,8 @@ PlotScene::PlotScene()
 	backButton->setImageSize(28, 28);
 	backButton->setImageFile("left-arrow-white.png");
 
-	auto backBtnCallback = [this, sceneManager]() {
-		sceneManager->setCurrentScene("SamplingScene");
-		sceneManager->unregisterScene(this);
+	auto backBtnCallback = [parent]() {
+		parent->show();
 	};
 	backButton->setTouchCallback(backBtnCallback);
 
@@ -58,6 +58,10 @@ void PlotScene::requestNewData()
 	textMessage->setText("Measure in progress");
 	refreshButton->setTouchEnabled(false);
 
+	digitalWrite(Config::LED_PIN, HIGH);
+
+	usleep(50 * 1000); // wait 50 ms (just to be safe)
+
 	Application::runOnCurrentWorkerThread(new Task([this]()
 		{
 			std::vector<float> values;
@@ -86,15 +90,16 @@ void PlotScene::requestNewData()
 				Application::runOnCurrentMainThread(new Task([this, xValues, values]() {
 					xyPlot->setData(xValues, values);
 					textMessage->setText("");
-					refreshButton->setTouchEnabled(true);
 					}));
 			}
 			catch (const CCDException& exc)
 			{
 				fprintf(stderr, "Error while reading data from device.\n%s\n", exc.what());
-				Application::runOnCurrentMainThread(new Task([this]() {
-					refreshButton->setTouchEnabled(true);
-					}));
 			}
+			digitalWrite(Config::LED_PIN, LOW);
+
+			Application::runOnCurrentMainThread(new Task([this]() {
+				refreshButton->setTouchEnabled(true);
+				}));
 		}));
 }

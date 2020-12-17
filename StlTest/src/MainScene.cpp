@@ -1,6 +1,6 @@
 #include "MainScene.h"
-#include "ImageButton.h"
-#include "SineWaveAnimation.h"
+#include <TouchCP/ImageButton.h>
+#include <TouchCP/SineWaveAnimation.h>
 #include "SamplingScene.h"
 
 MainScene::MainScene()
@@ -8,10 +8,9 @@ MainScene::MainScene()
 	// The scene manager can be retrieved from the global application instance
 	// You can get it through the ::getCurrent() static method on the Application class
 	SceneManager* sceneManager = Application::getCurrentSceneManager();
-	int width, height;
+	int width = 480, height = 320;
 
 	SDL_Window* window = Application::getCurrent()->getWindow();
-	SDL_GetWindowSize(window, &width, &height);
 
 	SpaceGrid5x3 startBtnPos(0, 0);
 	SpaceGrid5x3 exitBtnPos(4, 0);
@@ -50,11 +49,10 @@ MainScene::MainScene()
 	sineAnim = new SineWaveAnimation();
 	addObject(sineAnim);
 
-	samplingScene = new SamplingScene();
+	samplingScene = new SamplingScene(this);
 	sceneManager->registerScene("SamplingScene", samplingScene);
 }
 
 MainScene::~MainScene() {
-	Application::getCurrentSceneManager()->unregisterScene(samplingScene);
 	delete samplingScene;
 }

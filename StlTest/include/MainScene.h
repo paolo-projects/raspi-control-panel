@@ -1,11 +1,9 @@
 #pragma once
-#include <SDL2/SDL.h>
 #include <memory>
 
-#include "Application.h"
-#include "TouchEnabledObject.h"
-#include "SceneManager.h"
-#include "SpaceGrid.h"
+#include <TouchCP/Application.h>
+#include <TouchCP/SceneManager.h>
+#include <TouchCP/SpaceGrid.h>
 
 class SamplingScene;
 class ImageButton;

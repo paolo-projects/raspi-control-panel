@@ -4,7 +4,7 @@
 #include <algorithm>
 #include <string>
 #include <cstdio>
-#include "Point.h"
+#include <TouchCP/Point.h>
 
 class Processing
 {

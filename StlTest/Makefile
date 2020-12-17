@@ -1,7 +1,7 @@
 CXX = g++
 CXXFLAGS = -Wall -Wextra -pedantic -std=c++11 -g -MMD
 LDFLAGS = -pthread
-LBLIBS = -lSDL2 -lts -lSDL2_ttf -lSDL2_image
+LBLIBS = -lTouchCPLib -lwiringPi
 INCLUDES = -Iinclude
 
 SRC = $(wildcard src/*.cpp)

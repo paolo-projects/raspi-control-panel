@@ -1,16 +1,20 @@
 #pragma once
+#include <wiringPi.h>
 
-#include "GraphicsScene.h"
-#include "ImageButton.h"
-#include "XYPlot.h"
+#include <TouchCP/GraphicsScene.h>
+#include <TouchCP/ImageButton.h>
+#include <TouchCP/XYPlot.h>
+#include <TouchCP/Text.h>
 #include "Processing.h"
 #include "CCDMeasure.h"
-#include "Text.h"
+#include "Config.h"
+
+class SamplingScene;
 
 class PlotScene : public GraphicsScene
 {
 public:
-	PlotScene();
+	PlotScene(SamplingScene* parent);
 	~PlotScene();
 private:
 	void requestNewData();

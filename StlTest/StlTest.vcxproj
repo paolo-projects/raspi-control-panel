@@ -107,68 +107,26 @@
     <SourcePath>src</SourcePath>
   </PropertyGroup>
   <ItemGroup>
-    <ClCompile Include="src\MainThreadTaskRunner.cpp" />
-    <ClCompile Include="src\WorkerThread.cpp" />
-    <ClCompile Include="src/Application.cpp" />
-    <ClCompile Include="src/Button.cpp" />
-    <ClCompile Include="src/GraphicsScene.cpp" />
-    <ClCompile Include="src/ImageButton.cpp" />
+    <ClCompile Include="src\Config.cpp" />
     <ClCompile Include="src/main.cpp" />
     <ClCompile Include="src/MainScene.cpp" />
     <ClCompile Include="src/PlotScene.cpp" />
     <ClCompile Include="src/SamplingScene.cpp" />
-    <ClCompile Include="src/SceneManager.cpp" />
-    <ClCompile Include="src/SineWaveAnimation.cpp" />
-    <ClCompile Include="src/Text.cpp" />
-    <ClCompile Include="src/TouchEventDispatcher.cpp" />
-    <ClCompile Include="src/TouchInput.cpp" />
-    <ClCompile Include="src/WavefunctionAnimation.cpp" />
-    <ClCompile Include="src/Window.cpp" />
-    <ClCompile Include="src/XYPlot.cpp" />
     <ClCompile Include="src\CCDMeasure.cpp" />
     <ClCompile Include="src\Processing.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="include\WorkerThread.h" />
-    <ClInclude Include="include/Application.h" />
-    <ClInclude Include="include/Button.h" />
+    <ClInclude Include="include\Config.h" />
     <ClInclude Include="include/CCDException.h" />
     <ClInclude Include="include/CCDMeasure.h" />
-    <ClInclude Include="include/Color.h" />
-    <ClInclude Include="include/Font.h" />
-    <ClInclude Include="include/GraphicsObject.h" />
-    <ClInclude Include="include/GraphicsScene.h" />
-    <ClInclude Include="include/ImageButton.h" />
-    <ClInclude Include="include/IMGException.h" />
-    <ClInclude Include="include/InteractiveGraphicsObject.h" />
     <ClInclude Include="include/MainScene.h" />
-    <ClInclude Include="include/optional.h" />
     <ClInclude Include="include/PlotScene.h" />
-    <ClInclude Include="include/Point.h" />
-    <ClInclude Include="include/Rect.h" />
     <ClInclude Include="include/SamplingScene.h" />
-    <ClInclude Include="include/SceneManager.h" />
-    <ClInclude Include="include/SDLException.h" />
-    <ClInclude Include="include/SineWaveAnimation.h" />
-    <ClInclude Include="include/SpaceGrid.h" />
-    <ClInclude Include="include/Text.h" />
-    <ClInclude Include="include/TouchCPException.h" />
-    <ClInclude Include="include/TouchEnabledObject.h" />
-    <ClInclude Include="include/TouchEventDispatcher.h" />
-    <ClInclude Include="include/TouchInput.h" />
-    <ClInclude Include="include/TouchInputException.h" />
-    <ClInclude Include="include/TTFFontException.h" />
-    <ClInclude Include="include/WavefunctionAnimation.h" />
-    <ClInclude Include="include/Window.h" />
-    <ClInclude Include="include/XiaolinWu.h" />
-    <ClInclude Include="include/XYPlot.h" />
     <ClInclude Include="include\Processing.h" />
-    <ClInclude Include="include\Task.h" />
-    <ClInclude Include="include\MainThreadTaskRunner.h" />
   </ItemGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|ARM'">
     <Link>
-      <AdditionalDependencies>$(StlAdditionalDependencies);%(Link.AdditionalDependencies);-lSDL2;-lts;-lSDL2_ttf;-lSDL2_image</AdditionalDependencies>
+      <AdditionalDependencies>$(StlAdditionalDependencies);%(Link.AdditionalDependencies);-lTouchCPLib;-lwiringPi</AdditionalDependencies>
       <AdditionalOptions>-pthread</AdditionalOptions>
     </Link>
     <ClCompile>
@@ -177,7 +135,7 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|ARM'">
     <Link>
-      <AdditionalDependencies>$(StlAdditionalDependencies);%(Link.AdditionalDependencies);-lSDL2;-lts;-lSDL2_ttf;-lSDL2_image</AdditionalDependencies>
+      <AdditionalDependencies>$(StlAdditionalDependencies);%(Link.AdditionalDependencies);-lTouchCPLib;-lwiringPi</AdditionalDependencies>
       <AdditionalOptions>-pthread</AdditionalOptions>
     </Link>
     <ClCompile>
@@ -186,7 +144,7 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">
     <Link>
-      <AdditionalDependencies>$(StlAdditionalDependencies);%(Link.AdditionalDependencies);-lSDL2;-lts;-lSDL2_ttf;-lSDL2_image</AdditionalDependencies>
+      <AdditionalDependencies>$(StlAdditionalDependencies);%(Link.AdditionalDependencies);-lTouchCPLib;-lwiringPi</AdditionalDependencies>
       <AdditionalOptions>-pthread</AdditionalOptions>
     </Link>
     <ClCompile>
@@ -195,7 +153,7 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">
     <Link>
-      <AdditionalDependencies>$(StlAdditionalDependencies);%(Link.AdditionalDependencies);-lSDL2;-lts;-lSDL2_ttf;-lSDL2_image</AdditionalDependencies>
+      <AdditionalDependencies>$(StlAdditionalDependencies);%(Link.AdditionalDependencies);-lTouchCPLib;-lwiringPi</AdditionalDependencies>
       <AdditionalOptions>-pthread</AdditionalOptions>
     </Link>
     <ClCompile>
@@ -204,7 +162,7 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <Link>
-      <AdditionalDependencies>$(StlAdditionalDependencies);%(Link.AdditionalDependencies);-lSDL2;-lts;-lSDL2_ttf;-lSDL2_image</AdditionalDependencies>
+      <AdditionalDependencies>$(StlAdditionalDependencies);%(Link.AdditionalDependencies);-lTouchCPLib;-lwiringPi</AdditionalDependencies>
       <AdditionalOptions>-pthread</AdditionalOptions>
     </Link>
     <ClCompile>
@@ -213,7 +171,7 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <Link>
-      <AdditionalDependencies>$(StlAdditionalDependencies);%(Link.AdditionalDependencies);-lSDL2;-lts;-lSDL2_ttf;-lSDL2_image</AdditionalDependencies>
+      <AdditionalDependencies>$(StlAdditionalDependencies);%(Link.AdditionalDependencies);-lTouchCPLib;-lwiringPi</AdditionalDependencies>
       <AdditionalOptions>-pthread</AdditionalOptions>
     </Link>
     <ClCompile>
@@ -222,7 +180,7 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x86'">
     <Link>
-      <AdditionalDependencies>$(StlAdditionalDependencies);%(Link.AdditionalDependencies);-lSDL2;-lts;-lSDL2_ttf;-lSDL2_image</AdditionalDependencies>
+      <AdditionalDependencies>$(StlAdditionalDependencies);%(Link.AdditionalDependencies);-lTouchCPLib;-lwiringPi</AdditionalDependencies>
       <AdditionalOptions>-pthread</AdditionalOptions>
     </Link>
     <ClCompile>
@@ -231,7 +189,7 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x86'">
     <Link>
-      <AdditionalDependencies>$(StlAdditionalDependencies);%(Link.AdditionalDependencies);-lSDL2;-lts;-lSDL2_ttf;-lSDL2_image</AdditionalDependencies>
+      <AdditionalDependencies>$(StlAdditionalDependencies);%(Link.AdditionalDependencies);-lTouchCPLib;-lwiringPi</AdditionalDependencies>
       <AdditionalOptions>-pthread</AdditionalOptions>
     </Link>
     <ClCompile>

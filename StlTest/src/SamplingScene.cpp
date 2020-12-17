@@ -1,8 +1,9 @@
 #include "SamplingScene.h"
-#include "ImageButton.h"
-#include "WavefunctionAnimation.h"
+#include <TouchCP/ImageButton.h>
+#include <TouchCP/WavefunctionAnimation.h>
+#include "MainScene.h"
 
-SamplingScene::SamplingScene()
+SamplingScene::SamplingScene(MainScene* parent)
 {
 	SceneManager* sceneManager = Application::getCurrentSceneManager();
 
@@ -27,21 +28,18 @@ SamplingScene::SamplingScene()
 	backBtn->setImageSize(28, 28);
 	backBtn->setImageFile("left-arrow-white.png");
 
-	auto backBtnCallback = [sceneManager]() {
-		sceneManager->setCurrentScene("MainScene");
+	auto backBtnCallback = [parent]() {
+		parent->show();
 	};
 	backBtn->setTouchCallback(backBtnCallback);
 
-	auto measureBtnCallback = [this, sceneManager]() {
+	auto measureBtnCallback = [this]() {
 		if (plotScene != nullptr) {
 			delete plotScene;
 		}
 
-		plotScene = new PlotScene();
-
-		sceneManager->registerScene("PlotScene", plotScene);
-
-		sceneManager->setCurrentScene("PlotScene");
+		plotScene = new PlotScene(this);
+		plotScene->show();
 	};
 	measureBtn->setTouchCallback(measureBtnCallback);
 
