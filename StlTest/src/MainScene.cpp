@@ -39,8 +39,8 @@ MainScene::MainScene()
 	startBtn->setImageSize(28, 28);
 	startBtn->setImageFile("settings-white.png");
 
-	auto startBtnPress = [sceneManager]() {
-		sceneManager->setCurrentScene("SamplingScene");
+	auto startBtnPress = [this]() {
+		samplingScene->show();
 	};
 
 	startBtn->setTouchCallback(startBtnPress);
@@ -50,7 +50,6 @@ MainScene::MainScene()
 	addObject(sineAnim);
 
 	samplingScene = new SamplingScene(this);
-	sceneManager->registerScene("SamplingScene", samplingScene);
 }
 
 MainScene::~MainScene() {
