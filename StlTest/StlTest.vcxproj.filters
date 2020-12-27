@@ -18,6 +18,10 @@
       <Filter>Processing</Filter>
     </ClCompile>
     <ClCompile Include="src\Config.cpp" />
+    <ClCompile Include="src\SavitskyGolay.cpp">
+      <Filter>Processing</Filter>
+    </ClCompile>
+    <ClCompile Include="src\test.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include/MainScene.h">
@@ -39,6 +43,15 @@
       <Filter>Processing</Filter>
     </ClInclude>
     <ClInclude Include="include\Config.h" />
+    <ClInclude Include="include\SavitskyGolay.h">
+      <Filter>Processing</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Matrix.h">
+      <Filter>Processing</Filter>
+    </ClInclude>
+    <ClInclude Include="include\PolyFit.h">
+      <Filter>Processing</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Scenes">

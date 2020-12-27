@@ -31,11 +31,12 @@ struct __attribute__((__packed__)) TX_COMMAND
 
 class CCDMeasure
 {
+private:
+	static constexpr uint32_t swapEndianness(uint32_t value);
+	static constexpr uint16_t swapEndianness(uint16_t value);
 public:
 	static std::vector<uint16_t> measureValues(const std::string& device, int sh, int icg, bool continuous, int averages);
 private:
-	static uint32_t swapEndianness(uint32_t value);
-	static uint16_t swapEndianness(uint16_t value);
 	static void sendTxCommand(int ccd_fd, int sh, int icg, bool continuous, int averages);
 	static std::vector<uint16_t> receiveData(int ccd_fd);
 };

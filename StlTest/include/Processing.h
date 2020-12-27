@@ -6,6 +6,10 @@
 #include <cstdio>
 #include <TouchCP/Point.h>
 
+#include "PolyFit.h"
+
+using XYDataset = std::pair<std::vector<float>, std::vector<float>>;
+
 class Processing
 {
 public:
@@ -25,7 +29,10 @@ public:
 	 * @return The transformed data point
 	*/
 	static float transformDataPoint(int x, float y);
-	static PointT<float> FirstDerivativeMethod(const std::vector<float>& dataset);
-	static PointT<float> BaselineAndTopLineMethod(const std::vector<float>& dataset);
+	static PointT<float> FirstDerivativeMethod(const XYDataset& dataset);
+	static PointT<float> BaselineAndTopLineMethod(const XYDataset& dataset);
+	static PointT<float> RegressionBasedMethod(const XYDataset& dataset, float DERIV_TRESHOLD);
+	static std::pair<std::vector<float>, std::vector<float>> DerivativeBasedFilter(const XYDataset& dataset);
+	static std::vector<float> Derivatives(const std::vector<float>& data);
 private:
 };

@@ -1,3 +1,4 @@
+#ifndef TEST_ENV
 #include <SDL2/SDL.h>
 #include <wiringPi.h>
 #include <signal.h>
@@ -7,13 +8,6 @@
 
 constexpr auto S_WIDTH = 480;
 constexpr auto S_HEIGHT = 320;
-
-constexpr auto TTY_DEV = "/dev/tty0";
-constexpr auto TOUCH_DEV = "/dev/input/event0";
-
-constexpr auto FPS_LIMIT = 30;
-
-constexpr SDL_Color BACKGROUND_COLOR = { 0x00, 0x00, 0x00, 0xFF };
 
 Application* currentApp;
 
@@ -25,12 +19,12 @@ void signal_handler(int signal)
 int main(int argc, char** argv)
 {
 	wiringPiSetup();
-	pinMode(Config::LED_PIN, OUTPUT);
-	digitalWrite(Config::LED_PIN, LOW);
+	pinMode(Config::getLedPin(), OUTPUT);
+	digitalWrite(Config::getLedPin(), LOW);
 
 	try
 	{
-		Application app(S_WIDTH, S_HEIGHT, BACKGROUND_COLOR, TOUCH_DEV, TTY_DEV, FPS_LIMIT);
+		Application app(S_WIDTH, S_HEIGHT, Config::getBackgroundColor(), Config::getTouchDevice(), Config::getConsoleTTY(), Config::getFPSLimit());
 		currentApp = &app;
 
 		signal(SIGINT, signal_handler);
@@ -49,3 +43,4 @@ int main(int argc, char** argv)
 	}
 	return 0;
 }
+#endif

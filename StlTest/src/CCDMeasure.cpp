@@ -1,9 +1,20 @@
 #include "CCDMeasure.h"
 
+
+constexpr uint32_t CCDMeasure::swapEndianness(uint32_t value)
+{
+	return (value >> 24 & 0xFF) | ((value >> 16 & 0xFF) << 8) | ((value >> 8 & 0xFF) << 16) | ((value & 0xFF) << 24);
+}
+
+constexpr uint16_t CCDMeasure::swapEndianness(uint16_t value)
+{
+	return (value >> 8 & 0xFF) | ((value & 0xFF) << 8);
+}
+
 std::vector<uint16_t> CCDMeasure::measureValues(const std::string& device, int sh, int icg, bool continuous, int averages)
 {
-	assert(CCDMeasure::swapEndianness((uint32_t)0x01020304) == 0x04030201);
-	assert(CCDMeasure::swapEndianness((uint16_t)0x0A0B) == 0x0B0A);
+	static_assert(CCDMeasure::swapEndianness((uint32_t)0x01020304) == 0x04030201);
+	static_assert(CCDMeasure::swapEndianness((uint16_t)0x0A0B) == 0x0B0A);
 
 	int ccd = open(device.c_str(), O_RDWR | O_NOCTTY);
 	if (ccd < 0)
@@ -32,8 +43,8 @@ std::vector<uint16_t> CCDMeasure::measureValues(const std::string& device, int s
 	SerialSettings.c_iflag &= ~(IGNBRK | BRKINT | PARMRK | ISTRIP | INLCR | IGNCR | ICRNL); // Disable any special handling of received bytes
 	SerialSettings.c_oflag &= ~OPOST; // Prevent special interpretation of output bytes (e.g. newline chars)
 	SerialSettings.c_oflag &= ~ONLCR; // Prevent conversion of newline to carriage return/line feed
-	SerialSettings.c_cc[VTIME] = 0; // Timeout 1.5 s (15 tenths of second)
-	SerialSettings.c_cc[VMIN] = 1; // The min data size. We could set this but it accepts up to 255 (uchar), so it's pointless.
+	SerialSettings.c_cc[VTIME] = 15; // Timeout 1.5 s (15 tenths of second)
+	SerialSettings.c_cc[VMIN] = 0; // The min data size. We could set this but it accepts up to 255 (uchar), so it's pointless.
 
 	// Baud Rate
 	cfsetispeed(&SerialSettings, B115200);
@@ -56,28 +67,6 @@ std::vector<uint16_t> CCDMeasure::measureValues(const std::string& device, int s
 	close(ccd);
 
 	return rxData;
-}
-
-uint32_t CCDMeasure::swapEndianness(uint32_t value)
-{
-	return (value >> 24 & 0xFF) | ((value >> 16 & 0xFF) << 8) | ((value >> 8 & 0xFF) << 16) | ((value & 0xFF) << 24);
-	/*
-		If we don't like bitwise operators
-
-		uint32_t s = 0x12345678;
-		uint32_t d;
-		char* p = (char*)&s;
-		char* q = (char*)&d;
-		q[0] = p[3];
-		q[1] = p[2];
-		q[2] = p[1];
-		q[3] = p[0];
-	*/
-}
-
-uint16_t CCDMeasure::swapEndianness(uint16_t value)
-{
-	return (value >> 8 & 0xFF) | ((value & 0xFF) << 8);
 }
 
 void CCDMeasure::sendTxCommand(int ccd_fd, int sh, int icg, bool continuous, int averages)
@@ -110,7 +99,7 @@ std::vector<uint16_t> CCDMeasure::receiveData(int ccd_fd)
 
 	size_t rxCount = 0;
 
-	while (rxCount != RX_DATA_SIZE)
+	while (rxCount < RX_DATA_SIZE)
 	{
 		size_t rx_sz = read(ccd_fd, dataBuffer, RX_BUFFER_SZ);
 		if (rx_sz < 0) // An error occurred
@@ -123,7 +112,7 @@ std::vector<uint16_t> CCDMeasure::receiveData(int ccd_fd)
 		{
 			delete[] dataPoints;
 			close(ccd_fd);
-			throw CCDException("Error reading from device, only %d bytes read. %s", rxCount, strerror(errno));
+			throw CCDException("Error reading from device, only %d bytes read.", rxCount);
 		}
 		else { // Data read successfully or no data read but dataset is full
 			memcpy(dataPoints + rxCount, dataBuffer, rx_sz);

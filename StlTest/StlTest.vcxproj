@@ -5,6 +5,22 @@
       <Configuration>Debug</Configuration>
       <Platform>ARM</Platform>
     </ProjectConfiguration>
+    <ProjectConfiguration Include="LocalTest|ARM">
+      <Configuration>LocalTest</Configuration>
+      <Platform>ARM</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="LocalTest|ARM64">
+      <Configuration>LocalTest</Configuration>
+      <Platform>ARM64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="LocalTest|x64">
+      <Configuration>LocalTest</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="LocalTest|x86">
+      <Configuration>LocalTest</Configuration>
+      <Platform>x86</Platform>
+    </ProjectConfiguration>
     <ProjectConfiguration Include="Release|ARM">
       <Configuration>Release</Configuration>
       <Platform>ARM</Platform>
@@ -33,6 +49,22 @@
       <Configuration>Release</Configuration>
       <Platform>x64</Platform>
     </ProjectConfiguration>
+    <ProjectConfiguration Include="Test|ARM">
+      <Configuration>Test</Configuration>
+      <Platform>ARM</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Test|ARM64">
+      <Configuration>Test</Configuration>
+      <Platform>ARM64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Test|x64">
+      <Configuration>Test</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Test|x86">
+      <Configuration>Test</Configuration>
+      <Platform>x86</Platform>
+    </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{702de82c-4025-49eb-9aa8-00ebbde6e292}</ProjectGuid>
@@ -48,16 +80,34 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|ARM'" Label="Configuration">
     <UseDebugLibraries>true</UseDebugLibraries>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Test|ARM'" Label="Configuration">
+    <UseDebugLibraries>true</UseDebugLibraries>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='LocalTest|ARM'" Label="Configuration">
+    <UseDebugLibraries>true</UseDebugLibraries>
+  </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|ARM'" Label="Configuration">
     <UseDebugLibraries>false</UseDebugLibraries>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x86'" Label="Configuration">
     <UseDebugLibraries>true</UseDebugLibraries>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Test|x86'" Label="Configuration">
+    <UseDebugLibraries>true</UseDebugLibraries>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='LocalTest|x86'" Label="Configuration">
+    <UseDebugLibraries>true</UseDebugLibraries>
+  </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x86'" Label="Configuration">
     <UseDebugLibraries>false</UseDebugLibraries>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <UseDebugLibraries>true</UseDebugLibraries>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Test|x64'" Label="Configuration">
+    <UseDebugLibraries>true</UseDebugLibraries>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='LocalTest|x64'" Label="Configuration">
     <UseDebugLibraries>true</UseDebugLibraries>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
@@ -69,12 +119,26 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'" Label="Configuration">
     <UseDebugLibraries>true</UseDebugLibraries>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Test|ARM64'" Label="Configuration">
+    <UseDebugLibraries>true</UseDebugLibraries>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='LocalTest|ARM64'" Label="Configuration">
+    <UseDebugLibraries>true</UseDebugLibraries>
+  </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
   <ImportGroup Label="ExtensionSettings" />
   <ImportGroup Label="Shared" />
   <ImportGroup Label="PropertySheets" />
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|ARM'">
+    <IncludePath>include</IncludePath>
+    <SourcePath>src</SourcePath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Test|ARM'">
+    <IncludePath>include</IncludePath>
+    <SourcePath>src</SourcePath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='LocalTest|ARM'">
     <IncludePath>include</IncludePath>
     <SourcePath>src</SourcePath>
   </PropertyGroup>
@@ -86,11 +150,27 @@
     <IncludePath>include</IncludePath>
     <SourcePath>src</SourcePath>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Test|ARM64'">
+    <IncludePath>include</IncludePath>
+    <SourcePath>src</SourcePath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='LocalTest|ARM64'">
+    <IncludePath>include</IncludePath>
+    <SourcePath>src</SourcePath>
+  </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">
     <IncludePath>include</IncludePath>
     <SourcePath>src</SourcePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <IncludePath>include</IncludePath>
+    <SourcePath>src</SourcePath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Test|x64'">
+    <IncludePath>include</IncludePath>
+    <SourcePath>src</SourcePath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='LocalTest|x64'">
     <IncludePath>include</IncludePath>
     <SourcePath>src</SourcePath>
   </PropertyGroup>
@@ -102,11 +182,20 @@
     <IncludePath>include</IncludePath>
     <SourcePath>src</SourcePath>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Test|x86'">
+    <IncludePath>include</IncludePath>
+    <SourcePath>src</SourcePath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='LocalTest|x86'">
+    <IncludePath>include</IncludePath>
+    <SourcePath>src</SourcePath>
+  </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x86'">
     <IncludePath>include</IncludePath>
     <SourcePath>src</SourcePath>
   </PropertyGroup>
   <ItemGroup>
+    <ClCompile Include="src\SavitskyGolay.cpp" />
     <ClCompile Include="src\Config.cpp" />
     <ClCompile Include="src/main.cpp" />
     <ClCompile Include="src/MainScene.cpp" />
@@ -114,6 +203,7 @@
     <ClCompile Include="src/SamplingScene.cpp" />
     <ClCompile Include="src\CCDMeasure.cpp" />
     <ClCompile Include="src\Processing.cpp" />
+    <ClCompile Include="src\test.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\Config.h" />
@@ -123,6 +213,9 @@
     <ClInclude Include="include/PlotScene.h" />
     <ClInclude Include="include/SamplingScene.h" />
     <ClInclude Include="include\Processing.h" />
+    <ClInclude Include="include\SavitskyGolay.h" />
+    <ClInclude Include="include\Matrix.h" />
+    <ClInclude Include="include\PolyFit.h" />
   </ItemGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|ARM'">
     <Link>
@@ -131,6 +224,27 @@
     </Link>
     <ClCompile>
       <PreprocessorDefinitions>_TOUCH_CAPABILITIES_</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>%(ClCompile.AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Test|ARM'">
+    <Link>
+      <AdditionalDependencies>$(StlAdditionalDependencies);%(Link.AdditionalDependencies);-lTouchCPLib;-lwiringPi</AdditionalDependencies>
+      <AdditionalOptions>-pthread</AdditionalOptions>
+    </Link>
+    <ClCompile>
+      <PreprocessorDefinitions>_TOUCH_CAPABILITIES_;TEST_ENV</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>%(ClCompile.AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='LocalTest|ARM'">
+    <Link>
+      <AdditionalDependencies>$(StlAdditionalDependencies);%(Link.AdditionalDependencies);-lTouchCPLib;-lwiringPi</AdditionalDependencies>
+      <AdditionalOptions>-pthread</AdditionalOptions>
+    </Link>
+    <ClCompile>
+      <PreprocessorDefinitions>_TOUCH_CAPABILITIES_;TEST_ENV</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>%(ClCompile.AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|ARM'">
@@ -140,6 +254,7 @@
     </Link>
     <ClCompile>
       <PreprocessorDefinitions>_TOUCH_CAPABILITIES_;NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>%(ClCompile.AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">
@@ -149,6 +264,27 @@
     </Link>
     <ClCompile>
       <PreprocessorDefinitions>_TOUCH_CAPABILITIES_</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>%(ClCompile.AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Test|ARM64'">
+    <Link>
+      <AdditionalDependencies>$(StlAdditionalDependencies);%(Link.AdditionalDependencies);-lTouchCPLib;-lwiringPi</AdditionalDependencies>
+      <AdditionalOptions>-pthread</AdditionalOptions>
+    </Link>
+    <ClCompile>
+      <PreprocessorDefinitions>_TOUCH_CAPABILITIES_;TEST_ENV</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>%(ClCompile.AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='LocalTest|ARM64'">
+    <Link>
+      <AdditionalDependencies>$(StlAdditionalDependencies);%(Link.AdditionalDependencies);-lTouchCPLib;-lwiringPi</AdditionalDependencies>
+      <AdditionalOptions>-pthread</AdditionalOptions>
+    </Link>
+    <ClCompile>
+      <PreprocessorDefinitions>_TOUCH_CAPABILITIES_;TEST_ENV</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>%(ClCompile.AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">
@@ -158,6 +294,7 @@
     </Link>
     <ClCompile>
       <PreprocessorDefinitions>_TOUCH_CAPABILITIES_;NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>%(ClCompile.AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -167,6 +304,27 @@
     </Link>
     <ClCompile>
       <PreprocessorDefinitions>_TOUCH_CAPABILITIES_</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>%(ClCompile.AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Test|x64'">
+    <Link>
+      <AdditionalDependencies>$(StlAdditionalDependencies);%(Link.AdditionalDependencies);-lTouchCPLib;-lwiringPi</AdditionalDependencies>
+      <AdditionalOptions>-pthread</AdditionalOptions>
+    </Link>
+    <ClCompile>
+      <PreprocessorDefinitions>_TOUCH_CAPABILITIES_;TEST_ENV</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>%(ClCompile.AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='LocalTest|x64'">
+    <Link>
+      <AdditionalDependencies>$(StlAdditionalDependencies);%(Link.AdditionalDependencies);-lTouchCPLib;-lwiringPi</AdditionalDependencies>
+      <AdditionalOptions>-pthread</AdditionalOptions>
+    </Link>
+    <ClCompile>
+      <PreprocessorDefinitions>_TOUCH_CAPABILITIES_;TEST_ENV</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>%(ClCompile.AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -176,6 +334,7 @@
     </Link>
     <ClCompile>
       <PreprocessorDefinitions>_TOUCH_CAPABILITIES_;NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>%(ClCompile.AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x86'">
@@ -185,6 +344,27 @@
     </Link>
     <ClCompile>
       <PreprocessorDefinitions>_TOUCH_CAPABILITIES_</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>%(ClCompile.AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Test|x86'">
+    <Link>
+      <AdditionalDependencies>$(StlAdditionalDependencies);%(Link.AdditionalDependencies);-lTouchCPLib;-lwiringPi</AdditionalDependencies>
+      <AdditionalOptions>-pthread</AdditionalOptions>
+    </Link>
+    <ClCompile>
+      <PreprocessorDefinitions>_TOUCH_CAPABILITIES_;TEST_ENV</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>%(ClCompile.AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='LocalTest|x86'">
+    <Link>
+      <AdditionalDependencies>$(StlAdditionalDependencies);%(Link.AdditionalDependencies);-lTouchCPLib;-lwiringPi</AdditionalDependencies>
+      <AdditionalOptions>-pthread</AdditionalOptions>
+    </Link>
+    <ClCompile>
+      <PreprocessorDefinitions>_TOUCH_CAPABILITIES_;TEST_ENV</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>%(ClCompile.AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x86'">
@@ -194,6 +374,7 @@
     </Link>
     <ClCompile>
       <PreprocessorDefinitions>_TOUCH_CAPABILITIES_;NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>%(ClCompile.AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
   </ItemDefinitionGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

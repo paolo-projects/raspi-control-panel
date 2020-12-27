@@ -8,6 +8,7 @@
 #include "Processing.h"
 #include "CCDMeasure.h"
 #include "Config.h"
+#include "SavitskyGolay.h"
 
 class SamplingScene;
 
@@ -17,9 +18,10 @@ public:
 	PlotScene(SamplingScene* parent);
 	~PlotScene();
 private:
-	void requestNewData();
-	ImageButton* backButton, * refreshButton;
+	void requestNewData(bool smooth);
+	ImageButton* backButton, * refreshButton, *refreshRawButton;
 	Text* textMessage;
 	XYPlot* xyPlot;
+	static const Matrix<float> savgolCoeffs;
 };
 

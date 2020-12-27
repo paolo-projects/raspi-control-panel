@@ -8,7 +8,6 @@ MainScene::MainScene()
 	// The scene manager can be retrieved from the global application instance
 	// You can get it through the ::getCurrent() static method on the Application class
 	SceneManager* sceneManager = Application::getCurrentSceneManager();
-	int width = 480, height = 320;
 
 	SDL_Window* window = Application::getCurrent()->getWindow();
 

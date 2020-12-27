@@ -1,6 +1,8 @@
 #include "PlotScene.h"
 #include "SamplingScene.h"
 
+const Matrix<float> PlotScene::savgolCoeffs = SavitskyGolay::Coefficients(7, 3);
+
 PlotScene::PlotScene(SamplingScene* parent)
 {
 	auto sceneManager = Application::getCurrentSceneManager();
@@ -12,9 +14,21 @@ PlotScene::PlotScene(SamplingScene* parent)
 	refreshButton->setImageFile("laser.png");
 
 	auto refreshBtnCallback = [this]() {
-		requestNewData();
+		requestNewData(true);
 	};
+
 	refreshButton->setTouchCallback(refreshBtnCallback);
+
+	refreshRawButton = new ImageButton();
+	refreshRawButton->setGeometry({ 420, 50, 40, 40 });
+	refreshRawButton->setFillColor({ 0xee, 0xee, 0xee, 0xFF });
+	refreshRawButton->setImageSize(28, 28);
+	refreshRawButton->setImageFile("raw-file-format-symbol.png");
+
+	auto refreshRawBtnCallback = [this]() {
+		requestNewData(false);
+	};
+	refreshRawButton->setTouchCallback(refreshRawBtnCallback);
 
 	backButton = new ImageButton();
 	backButton->setGeometry({ 420, 170, 40, 40 });
@@ -44,36 +58,40 @@ PlotScene::PlotScene(SamplingScene* parent)
 	addObject(xyPlot);
 	addObject(backButton);
 	addObject(refreshButton);
+	addObject(refreshRawButton);
 	addObject(textMessage);
 
-	requestNewData();
+	requestNewData(true);
 }
 
 PlotScene::~PlotScene()
 {
 }
 
-void PlotScene::requestNewData()
+void PlotScene::requestNewData(bool smooth)
 {// Measure
 	textMessage->setText("Measure in progress");
 	refreshButton->setTouchEnabled(false);
+	refreshRawButton->setTouchEnabled(false);
 
-	digitalWrite(Config::LED_PIN, HIGH);
+	digitalWrite(Config::getLedPin(), HIGH);
 
 	usleep(50 * 1000); // wait 50 ms (just to be safe)
 
-	Application::runOnCurrentWorkerThread(new Task([this]()
+	Application::runOnCurrentWorkerThread(new Task([this, smooth]()
 		{
 			std::vector<float> values;
-			values.resize(3694);
+			values.reserve(3694 - 32 - 14);
 
 			try {
-				auto data = CCDMeasure::measureValues("/dev/serial0", 500, 400000, false, 4);
+				auto data = CCDMeasure::measureValues(Config::getCCDSerialDev(), Config::getSHPeriod(), Config::getICGPeriod(), false, Config::getAveragesCount());
 
-				values.resize(3694);
 				for (int i = 0; i < 3694; i++)
 				{
-					values[i] = Processing::transformDataPoint(i, data[i]);
+					// Discard the first 32 data points and the last 14 (as they are dummy data)
+					if (i >= 32 && i < 3694 - 14) {
+						values.emplace_back(Processing::transformDataPoint(values.size(), data[i]));
+					}
 				}
 
 				std::vector<float> xValues;
@@ -81,25 +99,39 @@ void PlotScene::requestNewData()
 				for (size_t i = 0; i < values.size(); i++)
 					xValues[i] = i;
 
-				PointT<float> derivBendPoint = Processing::FirstDerivativeMethod(values);
-				PointT<float> baseLineBendPoint = Processing::BaselineAndTopLineMethod(values);
+				std::pair<std::vector<float>, std::vector<float>> dataset = std::make_pair(xValues, values);
+				//dataset = Processing::DerivativeBasedFilter(dataset);
+
+				if (smooth)
+				{
+					dataset.second = SavitskyGolay::applyFilter(dataset.second, savgolCoeffs);
+				}
+
+				PointT<float> derivBendPoint = Processing::FirstDerivativeMethod(dataset);
+				PointT<float> baseLineBendPoint = Processing::BaselineAndTopLineMethod(dataset);
+				PointT<float> regressionBendPoint = Processing::RegressionBasedMethod(dataset, 50);
 
 				printf("1° Derivative: Bend point at X=%f Y=%f\n", derivBendPoint.x, derivBendPoint.y);
 				printf("Base and top lines: Bend point at X=%f Y=%f\n", baseLineBendPoint.x, baseLineBendPoint.y);
+				printf("Regression: Bend point at X=%f Y=%f\n", regressionBendPoint.x, regressionBendPoint.y);
 
-				Application::runOnCurrentMainThread(new Task([this, xValues, values]() {
-					xyPlot->setData(xValues, values);
+				Application::runOnCurrentMainThread(new Task([this, dataset]() {
+					xyPlot->setData(dataset.first, dataset.second);
 					textMessage->setText("");
 					}));
 			}
 			catch (const CCDException& exc)
 			{
-				fprintf(stderr, "Error while reading data from device.\n%s\n", exc.what());
+				fprintf(stderr, "%s\n", exc.what());
+				Application::runOnCurrentMainThread(new Task([this]() {
+					textMessage->setText("An error occurred");
+					}));
 			}
-			digitalWrite(Config::LED_PIN, LOW);
+			digitalWrite(Config::getLedPin(), LOW);
 
 			Application::runOnCurrentMainThread(new Task([this]() {
 				refreshButton->setTouchEnabled(true);
+				refreshRawButton->setTouchEnabled(true);
 				}));
 		}));
 }
